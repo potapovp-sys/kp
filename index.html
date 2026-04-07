@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>КУЗОВПОРТ — Кузовной ремонт в Москве</title>
+<meta name="description" content="Кузовной ремонт в Москве с пожизненной гарантией. Оценка через WhatsApp. Срок 3–4 дня. ВАО, Измайлово.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://kuzovport.ru/">
+<meta property="og:title" content="КУЗОВПОРТ — Кузовной ремонт в Москве">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://kuzovport.ru/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"AutoRepair","name":"КУЗОВПОРТ","telephone":"+79261324365","address":{"@type":"PostalAddress","streetAddress":"1-я ул. Измайловского зверинца д.8, 7 этаж","addressLocality":"Москва","addressCountry":"RU"}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ── RESET ── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:#fafafa;color:#262626;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+button{cursor:pointer;border:none;background:none;font-family:inherit}
+
+/* ── CSS VARS ── */
+:root{
+  --white:#fff;
+  --bg:#fafafa;
+  --border:#dbdbdb;
+  --text:#262626;
+  --muted:#8e8e8e;
+  --link:#00376b;
+  --gold:#c49a3c;
+  --gold-light:#f0d078;
+  --blue:#0095f6;
+  --green:#25d366;
+  --tg:#0088cc;
+  --red:#ed4956;
+  --radius:12px;
+  --max:935px;
+}
+
+/* ── TOP NAV (Instagram style) ── */
+.top-nav{
+  position:sticky;top:0;z-index:200;
+  background:var(--white);
+  border-bottom:1px solid var(--border);
+  height:60px;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 16px;
+}
+.nav-logo{
+  font-size:22px;font-weight:700;
+  letter-spacing:-0.5px;
+  background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.nav-actions{display:flex;gap:12px;align-items:center}
+.nav-icon-btn{
+  width:40px;height:40px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  transition:background .15s;
+}
+.nav-icon-btn:hover{background:#f2f2f2}
+.nav-icon-btn svg{width:24px;height:24px;fill:var(--text)}
+.nav-wa{background:var(--green);border-radius:8px;padding:6px 14px;color:#fff;font-size:13px;font-weight:600;display:flex;align-items:center;gap:6px}
+.nav-wa:hover{background:#1dbc5a}
+.nav-wa svg{width:16px;height:16px;fill:#fff}
+
+/* ── LAYOUT ── */
+.page{max-width:var(--max);margin:0 auto;padding:0 16px}
+
+/* ── PROFILE HEADER ── */
+.profile{
+  padding:30px 0 20px;
+  display:grid;
+  grid-template-columns:auto 1fr;
+  gap:32px;
+  align-items:center;
+}
+.profile-avatar-wrap{position:relative}
+.profile-avatar{
+  width:150px;height:150px;border-radius:50%;
+  background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);
+  padding:3px;
+  flex-shrink:0;
+}
+.profile-avatar-inner{
+  width:100%;height:100%;border-radius:50%;
+  border:3px solid var(--white);
+  overflow:hidden;background:#ddd;
+}
+.profile-avatar-inner img{width:100%;height:100%;object-fit:cover}
+
+.profile-right{}
+.profile-username{font-size:20px;font-weight:300;margin-bottom:16px;display:flex;align-items:center;gap:12px}
+.profile-username strong{font-weight:600}
+.verified{width:18px;height:18px;fill:#0095f6;flex-shrink:0}
+
+.profile-stats{display:flex;gap:40px;margin-bottom:18px}
+.stat{text-align:center}
+.stat-n{font-size:16px;font-weight:700;color:var(--text)}
+.stat-l{font-size:14px;color:var(--text)}
+
+.profile-bio{font-size:14px;line-height:1.6;margin-bottom:10px}
+.profile-bio strong{font-weight:600;display:block}
+.profile-bio .gold{color:var(--gold);font-weight:600}
+.profile-link{font-size:14px;color:var(--link);font-weight:600}
+
+.profile-btns{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
+.btn-follow{
+  flex:1;min-width:120px;height:36px;border-radius:8px;
+  font-size:14px;font-weight:600;transition:all .15s;
+  display:flex;align-items:center;justify-content:center;gap:8px;
+}
+.btn-wa-full{background:var(--green);color:#fff}
+.btn-wa-full:hover{background:#1dbc5a}
+.btn-tg-full{background:var(--tg);color:#fff}
+.btn-tg-full:hover{background:#0076b0}
+.btn-msg{background:#efefef;color:var(--text)}
+.btn-msg:hover{background:#e0e0e0}
+.btn-more{background:#efefef;color:var(--text);width:36px;min-width:36px;flex:none;border-radius:8px}
+
+/* ── STORIES / HIGHLIGHTS ── */
+.highlights-scroll{
+  overflow-x:auto;
+  padding:16px 0 20px;
+  border-bottom:1px solid var(--border);
+  scrollbar-width:none;
+}
+.highlights-scroll::-webkit-scrollbar{display:none}
+.highlights-row{display:flex;gap:16px;padding:0 2px}
+.highlight{
+  display:flex;flex-direction:column;align-items:center;gap:6px;
+  flex-shrink:0;width:74px;cursor:pointer;
+}
+.highlight-ring{
+  width:66px;height:66px;border-radius:50%;
+  background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);
+  padding:2px;
+  transition:transform .2s;
+}
+.highlight:hover .highlight-ring{transform:scale(1.05)}
+.highlight-ring.gray{background:#dbdbdb}
+.highlight-inner{
+  width:100%;height:100%;border-radius:50%;
+  border:3px solid var(--white);
+  overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+  background:#f0f0f0;font-size:22px;
+}
+.highlight-inner img{width:100%;height:100%;object-fit:cover}
+.highlight-label{font-size:12px;color:var(--text);text-align:center;line-height:1.3}
+
+/* ── TABS ── */
+.tabs{
+  display:flex;border-top:1px solid var(--border);
+  position:sticky;top:60px;z-index:100;
+  background:var(--bg);
+}
+.tab{
+  flex:1;height:44px;display:flex;align-items:center;justify-content:center;
+  gap:6px;font-size:12px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;
+  color:var(--muted);border-top:1px solid transparent;
+  cursor:pointer;transition:all .15s;
+  border-top:2px solid transparent;margin-top:-1px;
+}
+.tab.active{color:var(--text);border-top-color:var(--text)}
+.tab svg{width:16px;height:16px}
+
+/* ── GRID (Instagram 3-col) ── */
+.grid-section{padding-top:4px}
+.photo-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:3px;
+}
+.grid-item{
+  position:relative;aspect-ratio:1/1;
+  overflow:hidden;background:#efefef;
+  cursor:pointer;
+}
+.grid-item img{
+  width:100%;height:100%;object-fit:cover;
+  transition:transform .4s ease,filter .3s;
+}
+.grid-item:hover img{transform:scale(1.07);filter:brightness(.85)}
+.grid-item-overlay{
+  position:absolute;inset:0;
+  display:flex;align-items:center;justify-content:center;gap:20px;
+  background:rgba(0,0,0,.35);
+  opacity:0;transition:opacity .25s;
+}
+.grid-item:hover .grid-item-overlay{opacity:1}
+.overlay-stat{color:#fff;display:flex;align-items:center;gap:5px;font-weight:700;font-size:14px}
+.overlay-stat svg{width:16px;height:16px;fill:#fff}
+/* featured: spans 2 cols on certain items */
+.grid-item.feat2{grid-column:span 2}
+.grid-item.feat2 .grid-item-overlay{opacity:0}
+
+/* ── SECTION HEADERS ── */
+.section-head{
+  padding:24px 0 16px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.section-head h2{font-size:16px;font-weight:700;color:var(--text)}
+.section-head a{font-size:14px;color:var(--blue);font-weight:600}
+
+/* ── REELS / VIDEO STRIP ── */
+.reels-scroll{overflow-x:auto;scrollbar-width:none;padding:0 0 12px}
+.reels-scroll::-webkit-scrollbar{display:none}
+.reels-row{display:flex;gap:8px}
+.reel-item{
+  flex-shrink:0;width:160px;
+  border-radius:12px;overflow:hidden;
+  background:#1a1a1a;position:relative;
+  aspect-ratio:9/16;cursor:pointer;
+}
+.reel-item img{width:100%;height:100%;object-fit:cover;opacity:.8;transition:opacity .25s}
+.reel-item:hover img{opacity:1}
+.reel-play{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:40px;height:40px;border-radius:50%;
+  background:rgba(0,0,0,.5);
+  display:flex;align-items:center;justify-content:center;
+}
+.reel-play svg{width:18px;height:18px;fill:#fff;margin-left:2px}
+.reel-label{
+  position:absolute;bottom:0;left:0;right:0;padding:10px 10px 8px;
+  background:linear-gradient(transparent,rgba(0,0,0,.7));
+  font-size:12px;color:#fff;font-weight:600;line-height:1.3;
+}
+.reel-views{font-size:11px;color:rgba(255,255,255,.7);font-weight:400;margin-top:2px}
+
+/* ── POSTS / BLOG ── */
+.post-card{
+  background:var(--white);
+  border:1px solid var(--border);
+  border-radius:0;
+  margin-bottom:24px;
+}
+.post-header{
+  display:flex;align-items:center;gap:12px;
+  padding:14px 16px;
+}
+.post-avatar{
+  width:32px;height:32px;border-radius:50%;
+  background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);
+  padding:1.5px;flex-shrink:0;
+}
+.post-avatar-inner{width:100%;height:100%;border-radius:50%;border:2px solid #fff;overflow:hidden;background:#ddd}
+.post-avatar-inner img{width:100%;height:100%;object-fit:cover}
+.post-user{font-size:14px;font-weight:600}
+.post-time{font-size:12px;color:var(--muted)}
+.post-more{margin-left:auto;color:var(--muted);font-size:20px;line-height:1;padding:0 4px}
+
+.post-img{width:100%;aspect-ratio:1/1;overflow:hidden;background:#efefef}
+.post-img img{width:100%;height:100%;object-fit:cover}
+.post-img.landscape{aspect-ratio:16/10}
+
+.post-actions{
+  display:flex;align-items:center;gap:4px;
+  padding:8px 12px 4px;
+}
+.post-action{
+  width:40px;height:40px;
+  display:flex;align-items:center;justify-content:center;
+  border-radius:50%;transition:background .15s;
+}
+.post-action:hover{background:#f2f2f2}
+.post-action svg{width:24px;height:24px}
+.post-action.liked svg{fill:var(--red)}
+.post-action svg.outline{fill:none;stroke:var(--text);stroke-width:2}
+.post-save{margin-left:auto}
+
+.post-likes{font-size:14px;font-weight:600;padding:0 16px 6px}
+.post-caption{font-size:14px;padding:0 16px 6px;line-height:1.5}
+.post-caption strong{font-weight:600}
+.post-caption .hashtag{color:var(--blue)}
+.post-comment-count{font-size:14px;color:var(--muted);padding:0 16px 14px}
+.post-comment-count a{color:var(--muted)}
+
+/* ── HIGHLIGHTS SECTION (stories-style circles for services) ── */
+.services-row{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+  padding:4px 0 20px;
+}
+.service-card{
+  display:flex;flex-direction:column;align-items:center;
+  gap:8px;cursor:pointer;
+  padding:16px 8px;
+  background:var(--white);border:1px solid var(--border);
+  border-radius:16px;
+  transition:all .2s;
+  text-align:center;
+}
+.service-card:hover{border-color:var(--gold);box-shadow:0 4px 16px rgba(0,0,0,.08);transform:translateY(-2px)}
+.service-icon{font-size:28px;margin-bottom:2px}
+.service-title{font-size:12px;font-weight:700;color:var(--text);line-height:1.3}
+.service-price{font-size:11px;color:var(--gold);font-weight:600;margin-top:2px}
+
+/* ── REVIEWS ── */
+.reviews-scroll{overflow-x:auto;scrollbar-width:none;padding-bottom:8px}
+.reviews-scroll::-webkit-scrollbar{display:none}
+.reviews-row{display:flex;gap:12px}
+.review-card{
+  flex-shrink:0;width:280px;
+  background:var(--white);border:1px solid var(--border);
+  border-radius:16px;padding:16px;
+}
+.review-top{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.review-ava{
+  width:38px;height:38px;border-radius:50%;
+  background:#f0f0f0;display:flex;align-items:center;justify-content:center;
+  font-size:16px;flex-shrink:0;font-weight:700;color:#555;
+}
+.review-info{}
+.review-name{font-size:14px;font-weight:600}
+.review-date{font-size:12px;color:var(--muted)}
+.review-stars{color:#ffc400;font-size:13px;letter-spacing:1px;margin-bottom:6px}
+.review-text{font-size:13px;color:#333;line-height:1.55}
+.review-car{font-size:12px;color:var(--muted);margin-top:6px}
+
+/* ── LINKS (Linktree style) ── */
+.links-grid{display:flex;flex-direction:column;gap:10px;padding-bottom:8px}
+.link-card{
+  display:flex;align-items:center;gap:14px;
+  padding:14px 18px;
+  background:var(--white);
+  border:1px solid var(--border);
+  border-radius:14px;
+  transition:all .2s;font-size:14px;font-weight:600;
+}
+.link-card:hover{border-color:#aaa;background:#fafafa;transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,0,0,.07)}
+.link-icon{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.link-icon svg{width:22px;height:22px;fill:#fff}
+.link-icon img{width:22px;height:22px;object-fit:contain}
+.link-text{flex:1}
+.link-title{}
+.link-sub{font-size:12px;color:var(--muted);font-weight:400;margin-top:1px}
+.link-arrow{color:var(--muted);font-size:16px;margin-left:auto}
+
+/* ── PRICE TABLE ── */
+.price-section{
+  background:var(--white);border:1px solid var(--border);
+  border-radius:16px;overflow:hidden;margin-bottom:16px;
+}
+.price-head{
+  background:#fafafa;padding:16px 20px;
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:center;gap:10px;
+}
+.price-head-icon{font-size:20px}
+.price-head h3{font-size:16px;font-weight:700}
+.price-rows{}
+.price-row{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 20px;border-bottom:1px solid #f2f2f2;
+  transition:background .15s;
+}
+.price-row:last-child{border-bottom:none}
+.price-row:hover{background:#fafafa}
+.price-name{font-size:14px;font-weight:500;flex:1}
+.price-desc{font-size:12px;color:var(--muted);margin-top:2px}
+.price-val{font-size:15px;font-weight:700;color:var(--text);white-space:nowrap;margin-left:16px}
+.price-badge{
+  display:inline-block;padding:2px 8px;
+  background:#fff3e0;color:#e65100;
+  font-size:11px;font-weight:600;border-radius:20px;
+  margin-left:8px;
+}
+
+/* ── COLORISTICS ── */
+.color-card{
+  background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%);
+  border-radius:16px;overflow:hidden;
+  margin-bottom:16px;position:relative;
+}
+.color-card-inner{padding:24px 20px 20px;position:relative;z-index:1}
+.color-card h3{font-size:20px;font-weight:700;color:#fff;margin-bottom:6px}
+.color-card p{font-size:13px;color:rgba(255,255,255,.65);line-height:1.6;margin-bottom:16px}
+.color-chip-row{display:flex;gap:6px;margin-bottom:20px}
+.chip{width:32px;height:32px;border-radius:50%;border:2px solid rgba(255,255,255,.3)}
+.color-btns{display:flex;gap:8px}
+.btn-gold-sm{
+  background:linear-gradient(90deg,var(--gold),var(--gold-light));
+  color:#1a1a1a;font-size:13px;font-weight:700;
+  padding:10px 18px;border-radius:10px;transition:opacity .2s;
+}
+.btn-gold-sm:hover{opacity:.85}
+.btn-ghost-sm{
+  background:rgba(255,255,255,.12);color:#fff;
+  font-size:13px;font-weight:600;padding:10px 18px;border-radius:10px;
+  transition:background .2s;
+}
+.btn-ghost-sm:hover{background:rgba(255,255,255,.2)}
+.standox-badge{
+  position:absolute;top:20px;right:20px;
+  background:rgba(255,255,255,.1);backdrop-filter:blur(8px);
+  color:#fff;font-size:12px;font-weight:700;letter-spacing:1px;
+  padding:6px 12px;border-radius:8px;border:1px solid rgba(255,255,255,.2);
+  z-index:2;
+}
+
+/* ── MAP ── */
+.map-wrap{
+  border-radius:16px;overflow:hidden;
+  border:1px solid var(--border);
+  margin-bottom:16px;
+}
+.map-wrap iframe{display:block;width:100%;height:300px;border:none}
+.map-info{
+  padding:16px 20px;background:var(--white);
+  display:flex;align-items:center;gap:12px;
+}
+.map-pin{font-size:20px}
+.map-addr{font-size:14px;font-weight:500;line-height:1.4}
+.map-addr span{font-size:12px;color:var(--muted);display:block;font-weight:400}
+
+/* ── CONTACT FORM ── */
+.contact-form-card{
+  background:var(--white);border:1px solid var(--border);
+  border-radius:16px;padding:20px;margin-bottom:16px;
+}
+.contact-form-card h3{font-size:16px;font-weight:700;margin-bottom:16px}
+.cf-row{margin-bottom:12px}
+.cf-row input,.cf-row textarea,.cf-row select{
+  width:100%;
+  background:#fafafa;border:1px solid var(--border);
+  border-radius:10px;padding:12px 14px;
+  font-family:inherit;font-size:14px;color:var(--text);
+  outline:none;transition:border-color .2s;
+  -webkit-appearance:none;
+}
+.cf-row input:focus,.cf-row textarea:focus,.cf-row select:focus{border-color:#a0a0a0}
+.cf-row textarea{resize:none;height:80px}
+.cf-row select option{background:#fff}
+.cf-submit{
+  width:100%;padding:13px;border-radius:10px;
+  background:var(--text);color:#fff;
+  font-family:inherit;font-size:14px;font-weight:700;
+  transition:background .2s;
+}
+.cf-submit:hover{background:#333}
+
+/* ── FLOATING CTA ── */
+.float-row{
+  position:fixed;bottom:20px;right:16px;
+  z-index:300;display:flex;flex-direction:column;gap:10px;
+}
+.fab{
+  width:52px;height:52px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 20px rgba(0,0,0,.2);
+  transition:transform .2s;
+}
+.fab:hover{transform:scale(1.1)}
+.fab svg{width:26px;height:26px;fill:#fff}
+.fab-wa{background:var(--green)}
+.fab-tg{background:var(--tg)}
+
+/* ── FOOTER ── */
+.footer{
+  border-top:1px solid var(--border);
+  padding:30px 0 40px;text-align:center;
+}
+.footer-logo{
+  font-size:18px;font-weight:700;letter-spacing:-0.5px;
+  background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;margin-bottom:8px;
+}
+.footer-links{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-bottom:14px}
+.footer-links a{font-size:13px;color:var(--muted)}
+.footer-links a:hover{color:var(--text)}
+.footer-copy{font-size:12px;color:var(--muted);line-height:1.6}
+
+/* ── SECTION DIVIDER ── */
+.section-sep{height:1px;background:var(--border);margin:8px 0 24px}
+
+/* ── ANIM ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.fade-in{opacity:0}
+.fade-in.visible{animation:fadeUp .5s ease forwards}
+.d1{animation-delay:.05s}.d2{animation-delay:.1s}.d3{animation-delay:.15s}
+
+/* ── RESPONSIVE ── */
+@media(max-width:600px){
+  .profile{grid-template-columns:auto 1fr;gap:20px}
+  .profile-avatar{width:88px;height:88px}
+  .profile-stats{gap:20px}
+  .stat-n{font-size:15px}
+  .services-row{grid-template-columns:repeat(4,1fr);gap:8px}
+  .service-card{padding:12px 4px}
+  .service-icon{font-size:22px}
+  .service-title{font-size:11px}
+  .tabs span{display:none}
+  .tab{gap:0}
+  .price-row{flex-wrap:wrap;gap:4px}
+  .price-val{font-size:14px}
+  .profile-stats{gap:16px}
+  .section-head h2{font-size:15px}
+  .highlights-row{gap:12px}
+}
+@media(min-width:768px){
+  .photo-grid{gap:4px}
+  .post-card{border-radius:4px;max-width:614px;margin:0 auto 24px}
+  .services-row{grid-template-columns:repeat(4,1fr)}
+}
+</style>
+</head>
+<body>
+
+<!-- ══ TOP NAV ══ -->
+<nav class="top-nav">
+  <div class="nav-logo">kuzovport</div>
+  <div class="nav-actions">
+    <a href="https://wa.me/79261324365" class="nav-wa" rel="noopener">
+      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Оценить авто
+    </a>
+    <button class="nav-icon-btn" aria-label="Telegram" onclick="window.open('https://t.me/kuzovport','_blank')">
+      <svg viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+    </button>
+  </div>
+</nav>
+
+<div class="page">
+
+  <!-- ══ PROFILE HEADER ══ -->
+  <div class="profile fade-in">
+    <div class="profile-avatar-wrap">
+      <div class="profile-avatar">
+        <div class="profile-avatar-inner">
+          <img src="https://kuzovport.ru/wp-content/uploads/2024/04/IMG_3120.jpeg" alt="КУЗОВПОРТ" loading="eager">
+        </div>
+      </div>
+    </div>
+    <div class="profile-right">
+      <div class="profile-username">
+        <strong>kuzovport.ru</strong>
+        <svg class="verified" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+      </div>
+      <div class="profile-stats">
+        <div class="stat"><div class="stat-n">92+</div><div class="stat-l">работ</div></div>
+        <div class="stat"><div class="stat-n">7 лет</div><div class="stat-l">опыта</div></div>
+        <div class="stat"><div class="stat-n">5.0 ★</div><div class="stat-l">рейтинг</div></div>
+      </div>
+      <div class="profile-bio">
+        <strong>КУЗОВПОРТ 🔧 Академия кузовного ремонта</strong>
+        <span class="gold">∞ Пожизненная гарантия</span><br>
+        ⏱ Срок ремонта 3–4 дня<br>
+        📍 Москва, ВАО · Измайлово, 7 эт.<br>
+        🖌 Окраска детали от 25 000 ₽<br>
+        📲 Оценка по фото в WhatsApp
+      </div>
+      <div class="profile-btns">
+        <a href="https://wa.me/79261324365" class="btn-follow btn-wa-full" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp
+        </a>
+        <a href="https://t.me/kuzovport" class="btn-follow btn-tg-full" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+          Telegram
+        </a>
+        <a href="tel:+79261324365" class="btn-follow btn-msg">📞 Позвонить</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ HIGHLIGHTS (Services as stories) ══ -->
+  <div class="highlights-scroll">
+    <div class="highlights-row">
+      <div class="highlight" onclick="scrollTo('#price')">
+        <div class="highlight-ring">
+          <div class="highlight-inner">🔧</div>
+        </div>
+        <div class="highlight-label">Кузовной<br>ремонт</div>
+      </div>
+      <div class="highlight" onclick="scrollTo('#price')">
+        <div class="highlight-ring">
+          <div class="highlight-inner">🎨</div>
+        </div>
+        <div class="highlight-label">Покраска<br>деталей</div>
+      </div>
+      <div class="highlight" onclick="window.location='/color/'">
+        <div class="highlight-ring">
+          <div class="highlight-inner">🖌️</div>
+        </div>
+        <div class="highlight-label">Колори-<br>стика</div>
+      </div>
+      <div class="highlight" onclick="scrollTo('#price')">
+        <div class="highlight-ring">
+          <div class="highlight-inner">🚗</div>
+        </div>
+        <div class="highlight-label">Ремонт<br>PDR</div>
+      </div>
+      <div class="highlight" onclick="scrollTo('#map')">
+        <div class="highlight-ring gray">
+          <div class="highlight-inner">📍</div>
+        </div>
+        <div class="highlight-label">Адрес</div>
+      </div>
+      <div class="highlight" onclick="scrollTo('#reviews')">
+        <div class="highlight-ring gray">
+          <div class="highlight-inner">⭐</div>
+        </div>
+        <div class="highlight-label">Отзывы</div>
+      </div>
+      <div class="highlight" onclick="scrollTo('#blog')">
+        <div class="highlight-ring gray">
+          <div class="highlight-inner">📝</div>
+        </div>
+        <div class="highlight-label">Блог</div>
+      </div>
+      <div class="highlight" onclick="scrollTo('#links')">
+        <div class="highlight-ring gray">
+          <div class="highlight-inner">🔗</div>
+        </div>
+        <div class="highlight-label">Ссылки</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ TABS ══ -->
+  <div class="tabs" id="tabs">
+    <button class="tab active" data-tab="grid" onclick="switchTab('grid',this)">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 3h7v7H3zm0 11h7v7H3zm11-11h7v7h-7zm0 11h7v7h-7z"/></svg>
+      <span>Работы</span>
+    </button>
+    <button class="tab" data-tab="feed" onclick="switchTab('feed',this)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+      <span>Лента</span>
+    </button>
+    <button class="tab" data-tab="reels" onclick="switchTab('reels',this)">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M15 12L9 7v10l6-5z"/><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+      <span>Видео</span>
+    </button>
+    <button class="tab" data-tab="info" onclick="switchTab('info',this)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      <span>Инфо</span>
+    </button>
+  </div>
+
+  <!-- ══ TAB: GRID ══ -->
+  <div id="tab-grid" class="tab-content">
+    <div class="grid-section">
+      <div class="photo-grid">
+        <div class="grid-item fade-in">
+          <img src="https://kuzovport.ru/wp-content/uploads/2025/04/photo_2025-04-14-22.40.45-1024x731.jpeg" alt="Кузовной ремонт" loading="lazy">
+          <div class="grid-item-overlay"><div class="overlay-stat"><svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg> 124</div></div>
+        </div>
+        <div class="grid-item fade-in d1">
+          <img src="https://kuzovport.ru/wp-content/uploads/2025/04/photo_2025-04-14-22.40.49-1024x731.jpeg" alt="Покраска авто" loading="lazy">
+          <div class="grid-item-overlay"><div class="overlay-stat"><svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg> 98</div></div>
+        </div>
+        <div class="grid-item fade-in d2">
+          <img src="https://kuzovport.ru/wp-content/uploads/2025/04/photo_2025-04-14-22.40.55-1024x731.jpeg" alt="Кузовной ремонт Москва" loading="lazy">
+          <div class="grid-item-overlay"><div class="overlay-stat"><svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg> 207</div></div>
+        </div>
+        <div class="grid-item feat2 fade-in">
+          <img src="https://kuzovport.ru/wp-content/uploads/2025/04/photo_2025-04-14-22.40.58-1024x768.jpeg" alt="До и после ремонта" loading="lazy">
+        </div>
+        <div class="grid-item fade-in d1">
+          <img src="https://kuzovport.ru/wp-content/uploads/2022/05/13EC5DF1-5CFA-4B9A-910F-63F46CAFCD56-scaled-1-768x1024.jpeg" alt="Работа мастера" loading="lazy">
+          <div class="grid-item-overlay"><div class="overlay-stat"><svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg> 315</div></div>
+        </div>
+        <div class="grid-item fade-in d2">
+          <img src="https://kuzovport.ru/wp-content/uploads/2022/05/9FF8D041-E878-4DA5-9120-BB7ECAAC5B08-scaled-1-768x1024.jpeg" alt="Ремонт кузова" loading="lazy">
+          <div class="grid-item-overlay"><div class="overlay-stat"><svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg> 89</div></div>
+        </div>
+        <div class="grid-item fade-in">
+          <img src="https://kuzovport.ru/wp-content/uploads/2022/05/009F69AC-6326-4FDD-82E0-935189CD2505-scaled-1-768x1024.jpeg" alt="Профессиональный ремонт" loading="lazy">
+          <div class="grid-item-overlay"><div class="overlay-stat"><svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg> 143</div></div>
+        </div>
+        <div class="grid-item fade-in d1">
+          <img src="https://kuzovport.ru/wp-content/uploads/2022/05/8CF21506-9D48-4531-83A8-C34C09B7B65B-scaled-1-1024x768.jpeg" alt="Покраска кузова" loading="lazy">
+          <div class="grid-item-overlay"><div class="overlay-stat"><svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg> 176</div></div>
+        </div>
+        <div class="grid-item fade-in d2">
+          <img src="https://kuzovport.ru/wp-content/uploads/2022/05/8BD03C6F-0ECE-4BDF-AEA2-80E134EF01C0-scaled-1-768x1024.jpeg" alt="Кузовные работы" loading="lazy">
+          <div class="grid-item-overlay"><div class="overlay-stat"><svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg> 221</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ TAB: FEED (Blog posts) ══ -->
+  <div id="tab-feed" class="tab-content" style="display:none">
+    <div id="blog" style="padding-top:16px">
+
+      <!-- Post 1 -->
+      <article class="post-card fade-in">
+        <div class="post-header">
+          <div class="post-avatar"><div class="post-avatar-inner"><img src="https://kuzovport.ru/wp-content/uploads/2024/04/IMG_3120.jpeg" alt="kuzovport"></div></div>
+          <div>
+            <div class="post-user">kuzovport.ru</div>
+            <div class="post-time">3 дня назад · Москва</div>
+          </div>
+          <button class="post-more">···</button>
+        </div>
+        <div class="post-img landscape">
+          <img src="https://kuzovport.ru/wp-content/uploads/2025/04/photo_2025-04-14-22.40.45-1024x731.jpeg" alt="Кузовной ремонт в Москве" loading="lazy">
+        </div>
+        <div class="post-actions">
+          <button class="post-action" aria-label="Нравится"><svg viewBox="0 0 24 24" class="outline"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+          <button class="post-action" aria-label="Комментарий"><svg viewBox="0 0 24 24" class="outline"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></button>
+          <button class="post-action" aria-label="Поделиться" onclick="window.open('https://wa.me/?text='+encodeURIComponent(location.href))"><svg viewBox="0 0 24 24" class="outline"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button>
+          <button class="post-action post-save" aria-label="Сохранить"><svg viewBox="0 0 24 24" class="outline"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
+        </div>
+        <div class="post-likes">124 отметки «Нравится»</div>
+        <div class="post-caption"><strong>kuzovport.ru</strong> Слазит лак на машине? Разбираем причины и как это исправить 🔍<br>
+        Выцветание и шелушение лака — одна из самых частых проблем, с которой к нам обращаются. Главные причины: заводской брак, агрессивная мойка, перегрев кузова на солнце...<br>
+        <span class="hashtag">#кузовнойремонт #покраскаавтомобиля #лаккузова #москва #kuzovport</span></div>
+        <div class="post-comment-count"><a href="#">Смотреть все 18 комментариев</a></div>
+      </article>
+
+      <!-- Post 2 -->
+      <article class="post-card fade-in d1">
+        <div class="post-header">
+          <div class="post-avatar"><div class="post-avatar-inner"><img src="https://kuzovport.ru/wp-content/uploads/2024/04/IMG_3120.jpeg" alt="kuzovport"></div></div>
+          <div>
+            <div class="post-user">kuzovport.ru</div>
+            <div class="post-time">1 неделю назад</div>
+          </div>
+          <button class="post-more">···</button>
+        </div>
+        <div class="post-img">
+          <img src="https://kuzovport.ru/wp-content/uploads/2025/04/photo_2025-04-14-22.40.58-1024x768.jpeg" alt="Porsche после ремонта" loading="lazy">
+        </div>
+        <div class="post-actions">
+          <button class="post-action liked" aria-label="Нравится"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+          <button class="post-action"><svg viewBox="0 0 24 24" class="outline"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></button>
+          <button class="post-action"><svg viewBox="0 0 24 24" class="outline"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button>
+          <button class="post-action post-save"><svg viewBox="0 0 24 24" class="outline"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
+        </div>
+        <div class="post-likes">315 отметок «Нравится»</div>
+        <div class="post-caption"><strong>kuzovport.ru</strong> Porsche Cayenne вернулся к жизни 🍊✨ Полный кузовной ремонт после серьёзных повреждений. Цвет — заводской металлик, точный подбор на компонентах STANDOX. Результат — как с завода.<br>
+        <span class="hashtag">#porsche #porschecayenne #кузовнойремонт #покраска #standox #kuzovport #измайлово</span></div>
+        <div class="post-comment-count"><a href="#">Смотреть все 42 комментария</a></div>
+      </article>
+
+      <!-- Post 3 -->
+      <article class="post-card fade-in d2">
+        <div class="post-header">
+          <div class="post-avatar"><div class="post-avatar-inner"><img src="https://kuzovport.ru/wp-content/uploads/2024/04/IMG_3120.jpeg" alt="kuzovport"></div></div>
+          <div>
+            <div class="post-user">kuzovport.ru</div>
+            <div class="post-time">2 недели назад</div>
+          </div>
+          <button class="post-more">···</button>
+        </div>
+        <div class="post-img landscape">
+          <img src="https://kuzovport.ru/wp-content/uploads/2025/04/photo_2025-04-14-22.40.49-1024x731.jpeg" alt="Кузовной ремонт в Измайлово" loading="lazy">
+        </div>
+        <div class="post-actions">
+          <button class="post-action"><svg viewBox="0 0 24 24" class="outline"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+          <button class="post-action"><svg viewBox="0 0 24 24" class="outline"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></button>
+          <button class="post-action"><svg viewBox="0 0 24 24" class="outline"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button>
+          <button class="post-action post-save"><svg viewBox="0 0 24 24" class="outline"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
+        </div>
+        <div class="post-likes">207 отметок «Нравится»</div>
+        <div class="post-caption"><strong>kuzovport.ru</strong> Daewoo и Lamborghini — что у них общего? 😄 Оказывается, у бюджетных Chevrolet Aveo (Daewoo Kalos) и Lamborghini Gallardo одни корни в производстве... Читайте полный разбор в блоге.<br>
+        <span class="hashtag">#интересное #кузовнойремонт #покраска #avtofact #kuzovport</span></div>
+        <div class="post-comment-count"><a href="#">Смотреть все 11 комментариев</a></div>
+      </article>
+    </div>
+  </div>
+
+  <!-- ══ TAB: REELS ══ -->
+  <div id="tab-reels" class="tab-content" style="display:none">
+    <div class="section-head"><h2>🎬 Видео</h2></div>
+    <div class="reels-scroll">
+      <div class="reels-row">
+        <div class="reel-item">
+          <img src="https://kuzovport.ru/wp-content/uploads/2022/05/13EC5DF1-5CFA-4B9A-910F-63F46CAFCD56-scaled-1-768x1024.jpeg" alt="Видео ремонт" loading="lazy">
+          <div class="reel-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+          <div class="reel-label">До и после<br><span class="reel-views">12.4К просм.</span></div>
+        </div>
+        <div class="reel-item">
+          <img src="https://kuzovport.ru/wp-content/uploads/2022/05/9FF8D041-E878-4DA5-9120-BB7ECAAC5B08-scaled-1-768x1024.jpeg" alt="Процесс покраски" loading="lazy">
+          <div class="reel-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+          <div class="reel-label">Процесс покраски<br><span class="reel-views">8.7К просм.</span></div>
+        </div>
+        <div class="reel-item">
+          <img src="https://kuzovport.ru/wp-content/uploads/2022/05/009F69AC-6326-4FDD-82E0-935189CD2505-scaled-1-768x1024.jpeg" alt="Кузовные работы" loading="lazy">
+          <div class="reel-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+          <div class="reel-label">Рихтовка крыла<br><span class="reel-views">5.2К просм.</span></div>
+        </div>
+        <div class="reel-item">
+          <img src="https://kuzovport.ru/wp-content/uploads/2022/05/8CF21506-9D48-4531-83A8-C34C09B7B65B-scaled-1-1024x768.jpeg" alt="Ремонт BMW" loading="lazy">
+          <div class="reel-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+          <div class="reel-label">BMW · полный кузов<br><span class="reel-views">18.1К просм.</span></div>
+        </div>
+        <div class="reel-item">
+          <img src="https://kuzovport.ru/wp-content/uploads/2022/05/8BD03C6F-0ECE-4BDF-AEA2-80E134EF01C0-scaled-1-768x1024.jpeg" alt="Подбор цвета" loading="lazy">
+          <div class="reel-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+          <div class="reel-label">Подбор цвета<br><span class="reel-views">6.9К просм.</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Embedded iframe YouTube-style placeholder -->
+    <div class="section-head" style="margin-top:8px"><h2>📺 YouTube-канал</h2><a href="#" rel="noopener">Подписаться</a></div>
+    <div style="background:#000;border-radius:12px;overflow:hidden;aspect-ratio:16/9;margin-bottom:16px;display:flex;align-items:center;justify-content:center;position:relative;">
+      <img src="https://kuzovport.ru/wp-content/uploads/2025/04/photo_2025-04-14-22.40.45-1024x731.jpeg" alt="YouTube" style="width:100%;height:100%;object-fit:cover;opacity:.6">
+      <div style="position:absolute;background:rgba(0,0,0,.6);border-radius:50%;width:64px;height:64px;display:flex;align-items:center;justify-content:center;">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+      </div>
+      <div style="position:absolute;bottom:12px;left:14px;color:#fff;font-size:13px;font-weight:600;">Кузовной ремонт LIVE · КУЗОВПОРТ</div>
+    </div>
+  </div>
+
+  <!-- ══ TAB: INFO ══ -->
+  <div id="tab-info" class="tab-content" style="display:none">
+    <div style="padding-top:16px">
+
+      <!-- Services quick cards -->
+      <div class="section-head"><h2>🔧 Услуги</h2></div>
+      <div class="services-row fade-in">
+        <div class="service-card"><div class="service-icon">🔧</div><div class="service-title">Кузовной ремонт</div><div class="service-price">от 5 000 ₽</div></div>
+        <div class="service-card"><div class="service-icon">🎨</div><div class="service-title">Покраска детали</div><div class="service-price">от 25 000 ₽</div></div>
+        <div class="service-card"><div class="service-icon">🖌️</div><div class="service-title">Колористика</div><div class="service-price">запрос</div></div>
+        <div class="service-card"><div class="service-icon">✅</div><div class="service-title">∞ Гарантия</div><div class="service-price">навсегда</div></div>
+      </div>
+
+      <div class="section-sep"></div>
+
+      <!-- PRICE -->
+      <div id="price" class="section-head"><h2>💰 Прайс-лист</h2><a href="https://wa.me/79261324365" rel="noopener">Узнать цену</a></div>
+
+      <div class="price-section fade-in">
+        <div class="price-head"><span class="price-head-icon">🔧</span><h3>Кузовные работы</h3></div>
+        <div class="price-rows">
+          <div class="price-row">
+            <div><div class="price-name">Окраска одной детали</div><div class="price-desc">Бампер, крыло, дверь, капот</div></div>
+            <div class="price-val">от 25 000 ₽</div>
+          </div>
+          <div class="price-row">
+            <div><div class="price-name">Ремонт вмятины PDR</div><div class="price-desc">Без покраски, без шпатлёвки</div></div>
+            <div class="price-val">от 5 000 ₽</div>
+          </div>
+          <div class="price-row">
+            <div><div class="price-name">Комплексный ремонт<span class="price-badge">ХИТ</span></div><div class="price-desc">2–5 элементов кузова</div></div>
+            <div class="price-val">от 80 000 ₽</div>
+          </div>
+          <div class="price-row">
+            <div><div class="price-name">Полная покраска авто</div><div class="price-desc">Весь кузов, все элементы</div></div>
+            <div class="price-val">по запросу</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="price-section fade-in d1">
+        <div class="price-head"><span class="price-head-icon">🎨</span><h3>Покраска и полировка</h3></div>
+        <div class="price-rows">
+          <div class="price-row">
+            <div><div class="price-name">Полировка кузова</div><div class="price-desc">Устранение царапин, голограмм</div></div>
+            <div class="price-val">от 15 000 ₽</div>
+          </div>
+          <div class="price-row">
+            <div><div class="price-name">Антигравийное покрытие</div><div class="price-desc">Защита ЛКП</div></div>
+            <div class="price-val">по запросу</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="background:#fff3e0;border-radius:14px;padding:16px 18px;margin-bottom:16px;border:1px solid #ffe0b2" class="fade-in d2">
+        <div style="font-size:14px;font-weight:700;color:#e65100;margin-bottom:4px">⚡ Пожизненная гарантия</div>
+        <div style="font-size:13px;color:#555;line-height:1.5">На весь выполненный кузовной ремонт. Документально подтверждённая. Передаётся при продаже авто.</div>
+      </div>
+
+      <div class="section-sep"></div>
+
+      <!-- COLORISTICS -->
+      <div class="section-head"><h2>🖌️ Колористика</h2><a href="/color/">Подробнее</a></div>
+      <div class="color-card fade-in">
+        <div class="standox-badge">STANDOX</div>
+        <div class="color-card-inner">
+          <h3>Подбор автоэмалей<br>для кузовных станций</h3>
+          <p>Профессиональный цифровой подбор цвета. 50 000+ оттенков в базе. B2B-партнёрство для СТО по всей России.</p>
+          <div class="color-chip-row">
+            <div class="chip" style="background:#1a1a1a"></div>
+            <div class="chip" style="background:#c0c0c0"></div>
+            <div class="chip" style="background:#fff"></div>
+            <div class="chip" style="background:#8b0000"></div>
+            <div class="chip" style="background:#1c3a6a"></div>
+            <div class="chip" style="background:#c9a84c"></div>
+            <div class="chip" style="background:#2d6a2d"></div>
+            <div class="chip" style="background:#4a3728"></div>
+          </div>
+          <div class="color-btns">
+            <a href="/color/" class="btn-gold-sm">Узнать подробнее</a>
+            <a href="https://wa.me/79261324365" class="btn-ghost-sm" rel="noopener">Оставить заявку</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-sep"></div>
+
+      <!-- REVIEWS -->
+      <div id="reviews" class="section-head"><h2>⭐ Отзывы</h2><a href="https://yandex.ru/maps" rel="noopener">Яндекс.Карты</a></div>
+      <div class="reviews-scroll fade-in">
+        <div class="reviews-row">
+          <div class="review-card">
+            <div class="review-top">
+              <div class="review-ava">А</div>
+              <div class="review-info"><div class="review-name">Алексей М.</div><div class="review-date">2 недели назад</div></div>
+            </div>
+            <div class="review-stars">★★★★★</div>
+            <div class="review-text">«Отдавал BMW после аварии. Цвет попали в точку, шагрень как с завода. Никаких доплат сверх оговорённого. Очень доволен!»</div>
+            <div class="review-car">BMW 5-Series</div>
+          </div>
+          <div class="review-card">
+            <div class="review-top">
+              <div class="review-ava">Д</div>
+              <div class="review-info"><div class="review-name">Дмитрий К.</div><div class="review-date">1 месяц назад</div></div>
+            </div>
+            <div class="review-stars">★★★★★</div>
+            <div class="review-text">«Искал хороший сервис долго. КУЗОВПОРТ — лучший вариант. Оценка через WhatsApp, сроки соблюдены, пожизненная гарантия.»</div>
+            <div class="review-car">Mercedes GLE · Москва</div>
+          </div>
+          <div class="review-card">
+            <div class="review-top">
+              <div class="review-ava">Е</div>
+              <div class="review-info"><div class="review-name">Екатерина Р.</div><div class="review-date">3 недели назад</div></div>
+            </div>
+            <div class="review-stars">★★★★★</div>
+            <div class="review-text">«Ремонтировала Audi Q5. Никакого развода, чёткие сроки, отличный результат. Обязательно вернусь при необходимости.»</div>
+            <div class="review-car">Audi Q5 · Измайлово</div>
+          </div>
+          <div class="review-card">
+            <div class="review-top">
+              <div class="review-ava">С</div>
+              <div class="review-info"><div class="review-name">Сергей Н.</div><div class="review-date">1 месяц назад</div></div>
+            </div>
+            <div class="review-stars">★★★★★</div>
+            <div class="review-text">«Porsche после ДТП — думал придётся долго ждать, но сделали за 4 дня. Качество безупречное. Теперь только сюда.»</div>
+            <div class="review-car">Porsche Cayenne</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-sep"></div>
+
+      <!-- LINKS -->
+      <div id="links" class="section-head"><h2>🔗 Мы в сети</h2></div>
+      <div class="links-grid fade-in">
+        <a href="https://wa.me/79261324365" class="link-card" rel="noopener">
+          <div class="link-icon" style="background:#25d366"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></div>
+          <div class="link-text"><div class="link-title">WhatsApp</div><div class="link-sub">Оценить авто по фото · быстро</div></div>
+          <div class="link-arrow">›</div>
+        </a>
+        <a href="https://t.me/kuzovport" class="link-card" rel="noopener">
+          <div class="link-icon" style="background:#0088cc"><svg viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></div>
+          <div class="link-text"><div class="link-title">Telegram-канал</div><div class="link-sub">Новости, советы, работы</div></div>
+          <div class="link-arrow">›</div>
+        </a>
+        <a href="https://dzen.ru" class="link-card" rel="noopener" target="_blank">
+          <div class="link-icon" style="background:#fc3f1d"><svg viewBox="0 0 24 24" fill="white"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg></div>
+          <div class="link-text"><div class="link-title">Яндекс Дзен</div><div class="link-sub">Статьи о кузовном ремонте</div></div>
+          <div class="link-arrow">›</div>
+        </a>
+        <a href="https://yandex.ru/maps" class="link-card" rel="noopener" target="_blank">
+          <div class="link-icon" style="background:#fc3f1d"><svg viewBox="0 0 24 24" fill="white"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div>
+          <div class="link-text"><div class="link-title">Яндекс.Карты</div><div class="link-sub">Отзывы и маршрут к нам</div></div>
+          <div class="link-arrow">›</div>
+        </a>
+        <a href="https://kuzovport.ru/color/" class="link-card">
+          <div class="link-icon" style="background:linear-gradient(135deg,#f09433,#dc2743,#bc1888)">
+            <svg viewBox="0 0 24 24" fill="white"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9c.83 0 1.5-.67 1.5-1.5 0-.39-.15-.74-.39-1.01-.23-.26-.38-.61-.38-.99 0-.83.67-1.5 1.5-1.5H16c2.76 0 5-2.24 5-5 0-4.42-4.03-8-9-8zm-5.5 9c-.83 0-1.5-.67-1.5-1.5S5.67 9 6.5 9 8 9.67 8 10.5 7.33 12 6.5 12zm3-4C8.67 8 8 7.33 8 6.5S8.67 5 9.5 5s1.5.67 1.5 1.5S10.33 8 9.5 8zm5 0c-.83 0-1.5-.67-1.5-1.5S13.67 5 14.5 5s1.5.67 1.5 1.5S15.33 8 14.5 8zm3 4c-.83 0-1.5-.67-1.5-1.5S16.67 9 17.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
+          </div>
+          <div class="link-text"><div class="link-title">Колористика STANDOX</div><div class="link-sub">Подбор автоэмалей для СТО</div></div>
+          <div class="link-arrow">›</div>
+        </a>
+        <a href="tel:+79261324365" class="link-card">
+          <div class="link-icon" style="background:#262626"><svg viewBox="0 0 24 24" fill="white"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg></div>
+          <div class="link-text"><div class="link-title">+7 (926) 132-43-65</div><div class="link-sub">Позвонить напрямую</div></div>
+          <div class="link-arrow">›</div>
+        </a>
+      </div>
+
+      <div class="section-sep"></div>
+
+      <!-- MAP -->
+      <div id="map" class="section-head"><h2>📍 Как добраться</h2></div>
+      <div class="map-wrap fade-in">
+        <iframe
+          src="https://yandex.ru/map-widget/v1/?ll=37.746%2C55.788&z=16&l=map&pt=37.746%2C55.788%2Cpm2rdm"
+          title="КУЗОВПОРТ на карте"
+          loading="lazy"
+          allowfullscreen
+        ></iframe>
+        <div class="map-info">
+          <div class="map-pin">📍</div>
+          <div class="map-addr">
+            Москва, ВАО, 1-я ул. Измайловского зверинца д.8, 7 этаж
+            <span>м. Партизанская · 5 минут пешком</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-sep"></div>
+
+      <!-- CONTACT FORM -->
+      <div class="section-head"><h2>✉️ Оставить заявку</h2></div>
+      <div class="contact-form-card fade-in">
+        <h3>Получить оценку ремонта</h3>
+        <form id="cform" novalidate>
+          <div class="cf-row">
+            <input type="text" id="cf-name" placeholder="Ваше имя" autocomplete="name" required>
+          </div>
+          <div class="cf-row">
+            <input type="tel" id="cf-phone" placeholder="+7 (___) ___-__-__" autocomplete="tel" required>
+          </div>
+          <div class="cf-row">
+            <select id="cf-type">
+              <option value="">Тип работ</option>
+              <option>Кузовной ремонт</option>
+              <option>Покраска детали</option>
+              <option>Ремонт вмятины PDR</option>
+              <option>Полная покраска авто</option>
+              <option>Колористика B2B</option>
+            </select>
+          </div>
+          <div class="cf-row">
+            <textarea id="cf-msg" placeholder="Марка, модель авто и описание повреждений..."></textarea>
+          </div>
+          <button type="submit" class="cf-submit">Отправить в WhatsApp →</button>
+        </form>
+      </div>
+
+    </div><!-- /tab-info inner -->
+  </div><!-- /tab-info -->
+
+</div><!-- /page -->
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-logo">kuzovport.ru</div>
+  <div class="footer-links">
+    <a href="#photo" onclick="switchTab('grid',document.querySelector('[data-tab=grid]'))">Работы</a>
+    <a href="#price" onclick="switchTab('info',document.querySelector('[data-tab=info]'))">Цены</a>
+    <a href="/color/">Колористика</a>
+    <a href="#reviews" onclick="switchTab('info',document.querySelector('[data-tab=info]'))">Отзывы</a>
+    <a href="#contacts" onclick="switchTab('info',document.querySelector('[data-tab=info]'))">Контакты</a>
+  </div>
+  <div class="footer-copy">
+    © 2025 КУЗОВПОРТ · Кузовной ремонт в Москве<br>
+    ВАО, 1-я ул. Измайловского зверинца д.8, 7 этаж · +7 (926) 132-43-65
+  </div>
+</footer>
+
+<!-- FLOAT -->
+<div class="float-row">
+  <a href="https://wa.me/79261324365" class="fab fab-wa" aria-label="WhatsApp" rel="noopener">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+  <a href="https://t.me/kuzovport" class="fab fab-tg" aria-label="Telegram" rel="noopener">
+    <svg viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+  </a>
+</div>
+
+<script>
+// Tab switching
+function switchTab(name, btn) {
+  document.querySelectorAll('.tab-content').forEach(el => el.style.display = 'none');
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('tab-' + name).style.display = 'block';
+  btn.classList.add('active');
+  // Re-trigger animations
+  document.querySelectorAll('#tab-' + name + ' .fade-in').forEach(el => {
+    el.classList.remove('visible');
+    requestAnimationFrame(() => { el.classList.add('visible'); });
+  });
+}
+
+// Smooth scroll helper
+function scrollTo(id) {
+  const el = document.querySelector(id);
+  if (!el) {
+    // Switch to info tab first
+    switchTab('info', document.querySelector('[data-tab=info]'));
+    setTimeout(() => {
+      const t = document.querySelector(id);
+      if (t) window.scrollTo({ top: t.getBoundingClientRect().top + window.scrollY - 110, behavior: 'smooth' });
+    }, 100);
+  } else {
+    window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 110, behavior: 'smooth' });
+  }
+}
+
+// Highlight clicks
+document.querySelectorAll('.highlight').forEach(h => {
+  const fn = h.getAttribute('onclick');
+});
+
+// Reveal on scroll
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+
+// Form → WhatsApp
+document.getElementById('cform').addEventListener('submit', e => {
+  e.preventDefault();
+  const name = document.getElementById('cf-name').value.trim();
+  const phone = document.getElementById('cf-phone').value.trim();
+  if (!name || !phone) { alert('Заполните имя и телефон'); return; }
+  const type = document.getElementById('cf-type').value;
+  const msg = document.getElementById('cf-msg').value.trim();
+  const text = encodeURIComponent(`Заявка с сайта kuzovport.ru\nИмя: ${name}\nТел: ${phone}${type ? '\nУслуга: ' + type : ''}${msg ? '\n' + msg : ''}`);
+  window.open('https://wa.me/79261324365?text=' + text, '_blank');
+});
+
+// Post like toggle
+document.querySelectorAll('.post-action').forEach(btn => {
+  if (btn.querySelector('path[d*="20.84"]')) {
+    btn.addEventListener('click', function() {
+      this.classList.toggle('liked');
+    });
+  }
+});
+
+// Init first tab visible
+document.querySelectorAll('#tab-grid .fade-in').forEach(el => {
+  const obs2 = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.05 });
+  obs2.observe(el);
+});
+</script>
+</body>
+</html>
