@@ -47,20 +47,11 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .hl-in{width:100%;height:100%;border-radius:50%;border:3px solid var(--w);display:flex;align-items:center;justify-content:center;background:#f5f5f5;font-size:19px}
 .hl-name{font-size:10px;text-align:center;white-space:nowrap}
 
-/* GRID — Instagram Explore: 3 колонки, tall на 2 строки, ровно 5 строк высотой */
-.grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  grid-auto-rows:calc((min(470px,100vw) - 4px) / 3);
-  grid-template-rows:repeat(5, calc((min(470px,100vw) - 4px) / 3));
-  gap:2px;
-  padding-top:2px;
-  background:#fafafa;
-  overflow:hidden;
-  max-height:calc(5 * (min(470px,100vw) - 4px) / 3 + 8px);
-}
+.grid-wrap{overflow:hidden;background:#fafafa;display:block;position:relative}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:#fafafa}
 .gc{position:relative;overflow:hidden;background:#111;cursor:pointer}
-.gc.tall{grid-row:span 2}
+.gc.tall-l{grid-column:1;grid-row:1/3}
+.gc.tall-r{grid-column:3;grid-row:4/6}
 .gc.sm{background:#efefef}
 .gc video,.gc img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s,filter .25s}
 .gc:hover video,.gc:hover img{transform:scale(1.06);filter:brightness(.75)}
@@ -249,10 +240,15 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
   </div>
 </div>
 
+<div class="grid-wrap">
 <div class="grid" id="grid">
-  <div class="gc ph-cell tall">🎬</div><div class="gc sm ph-cell">📸</div><div class="gc sm ph-cell">📸</div>
-  <div class="gc sm ph-cell">📸</div><div class="gc sm ph-cell">📸</div><div class="gc ph-cell tall">🎬</div>
-  <div class="gc sm ph-cell">📸</div><div class="gc sm ph-cell">📸</div><div class="gc sm ph-cell">📸</div>
+  <div class="gc ph-cell tall-l">🎬</div>
+  <div class="gc sm ph-cell">📸</div><div class="gc sm ph-cell">📸</div>
+  <div class="gc sm ph-cell">📸</div><div class="gc sm ph-cell">📸</div>
+  <div class="gc sm ph-cell">📸</div><div class="gc sm ph-cell">📸</div>
+  <div class="gc sm ph-cell">📸</div><div class="gc sm ph-cell">📸</div>
+  <div class="gc sm ph-cell">📸</div><div class="gc ph-cell tall-r">🎬</div>
+</div>
 </div>
 
 <div class="view-all-wrap">
@@ -358,12 +354,41 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 </div>
 
 <script>
+// Задаём размеры сетки в пикселях через JS
+function sizeGrid(){
+  var wrapEl = document.querySelector('.grid-wrap');
+  var grid   = document.getElementById('grid');
+  if(!wrapEl || !grid) return;
+  var vw   = Math.min(470, wrapEl.parentNode.offsetWidth || window.innerWidth);
+  var cell = Math.floor((vw - 4) / 3); // ширина одной ячейки
+  var gap  = 2;
+  var rows = 5;
+  // Точная высота: 5 строк + 4 зазора, без padding
+  var wrapH = rows * cell + (rows - 1) * gap;
+  wrapEl.style.cssText = 'overflow:hidden;height:'+wrapH+'px;background:#fafafa;display:block;position:relative';
+  grid.style.gridTemplateRows = 'repeat('+rows+','+cell+'px)';
+  grid.style.gridAutoRows     = '0';
+  grid.style.paddingTop       = '0';
+  // Явная высота каждой ячейки
+  Array.prototype.forEach.call(grid.children, function(el){
+    if(el.classList.contains('tall-l') || el.classList.contains('tall-r')){
+      el.style.height = (cell * 2 + gap) + 'px';
+    } else {
+      el.style.height = cell + 'px';
+    }
+  });
+}
+
 var CAPS = ['Вот так выглядит настоящий кузовной ремонт! Пожизненная гарантия 🔧','До и после — смотрите результат! 3 дня работы, цвет как с завода ✨','Porsche, BMW, Mercedes — работаем с любыми марками 🚗','Показываем процесс изнутри — от рихтовки до покрытия 🎨','Подбор цвета STANDOX. 50000 оттенков — ваш найдём точно 🎯','Оценим ваш ремонт по фото в WhatsApp — отвечаем за 1 час 📲','Кузовной ремонт в Измайлово — рядом, быстро, с гарантией 🏆','Профессиональное оборудование, мастера высшей категории 🏭'];
 var HT = '#кузовнойремонт #покраска #москва #kuzovport';
-// 5 строк: tall(0,left) + sm + sm / sm + sm + tall(5,right) / sm + sm + sm
-// Позиции tall: 0 слева, 5 справа — оба занимают строки 1-2 и 4-5
-var GRID_N = 9;
-var tallSlots={0:true, 5:true};
+// Схема 5 строк × 3 колонки, 11 ячеек в DOM:
+// pos 0: tall-l (col1, row 1-2)
+// pos 1-4: sm (col2-3 row1, col2-3 row2)
+// pos 5-7: sm (col1-2-3 row3)
+// pos 8-9: sm (col1-2 row4, col1-2 row5)  ← col3 занята tall-r
+// pos 10: tall-r (col3, row 4-5) — ПОСЛЕДНЯЯ ячейка, grid не создаёт 6-ю строку
+var GRID_N = 11;
+var tallSlots = {0:'tall-l', 10:'tall-r'};
 function rnd(a){return a[Math.floor(Math.random()*a.length)];}
 function shuf(a){var b=a.slice();for(var i=b.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=b[i];b[i]=b[j];b[j]=t;}return b;}
 
@@ -386,6 +411,7 @@ function init(){
       } else break;
     }
     build(mixed);
+    sizeGrid();
   }).catch(function(e){console.warn('media.json:',e);});
 }
 
@@ -397,11 +423,12 @@ function build(mixed){
     var el=document.createElement('div');
     var cap=rnd(CAPS);
     var lk=Math.floor(Math.random()*5000+100);
-    var isTall=!!tallSlots[i];
+    var tallClass = tallSlots[i] || null;
+    var isTall = !!tallClass;
     if(m.type==='reel'){
       var vw=(Math.random()*18+2).toFixed(1)+'К';
       var url=m.item.url;
-      el.className='gc'+(isTall?' tall':'');
+      el.className='gc'+(tallClass?' '+tallClass:'');
       el.innerHTML='<video src="'+url+'" muted playsinline preload="none" loop></video>'
         +'<div class="rb"><svg viewBox="0 0 24 24"><path d="M15 12L9 7v10l6-5z"/></svg><span>'+vw+'</span></div>'
         +'<div class="gc-ov"><div class="ov-s"><svg viewBox="0 0 24 24"><path d="M15 12L9 7v10l6-5z"/></svg>'+vw+'</div></div>';
@@ -415,7 +442,7 @@ function build(mixed){
       })(el,url,cap,vw,lk);
     } else {
       var pu=m.item.url;
-      el.className='gc sm'+(isTall?' tall':'');
+      el.className='gc sm'+(tallClass?' '+tallClass:'');
       el.innerHTML='<img src="'+pu+'" alt="kuzovport" loading="lazy" onerror="this.parentElement.style.background=\'#ddd\'">'
         +'<div class="ph-badge"><svg viewBox="0 0 24 24" fill="white"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4" fill="white"/></svg></div>'
         +'<div class="gc-ov"><div class="ov-s"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>'+lk+'</div></div>';
@@ -516,6 +543,8 @@ function G(id){var el=document.getElementById(id);if(el)window.scrollTo({top:el.
 function send(){var n=document.getElementById('fn').value.trim(),p=document.getElementById('fp').value.trim();if(!n||!p){alert('Укажите имя и телефон');return;}var t=document.getElementById('ft').value,m=document.getElementById('fc').value.trim();window.open('https://wa.me/79261324365?text='+encodeURIComponent('Заявка с сайта kuzovport.ru\nИмя: '+n+'\nТел: '+p+(t?'\nУслуга: '+t:'')+(m?'\n'+m:'')),'_blank');}
 var ob=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');ob.unobserve(e.target);}});},{threshold:0.07});
 document.querySelectorAll('.rv').forEach(function(el){ob.observe(el);});
+sizeGrid();
+window.addEventListener('resize', sizeGrid);
 init();
 </script>
 </body>
