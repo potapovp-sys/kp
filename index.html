@@ -401,15 +401,19 @@ function init(){
     _st=shuf(d.stories).slice(0,5);
     var reels  = shuf(d.reels);
     var photos = shuf(d.photos);
-    // Собираем смешанный массив: ~55% рилсы, ~45% фото
-    var mixed=[], ri=0, pi=0;
-    while(mixed.length < GRID_N){
-      if(ri < reels.length && (pi >= photos.length || Math.random() > 0.45)){
-        mixed.push({type:'reel', item:reels[ri++]});
-      } else if(pi < photos.length){
-        mixed.push({type:'photo', item:photos[pi++]});
-      } else break;
-    }
+
+    // 2 tall — всегда рилсы (позиция 0 = tall-l, последняя = tall-r)
+    // 11 квадратных: 6 фото + 5 рилсов = строго ~50/50, перемешаны рандомно
+    var tallReels = reels.splice(0, 2);
+    var sqPhotos = photos.slice(0, 6).map(function(x){return {type:'photo', item:x};});
+    var sqReels  = reels.slice(0, 5).map(function(x){return {type:'reel',  item:x};});
+    var squares  = shuf(sqPhotos.concat(sqReels)); // ровно 11 квадратных
+
+    // Итого в DOM: 1 tall-l + 11 squares + 1 tall-r = 13 ячеек
+    var mixed = [{type:'reel', item:tallReels[0], tall:'tall-l'}]
+      .concat(squares)
+      .concat([{type:'reel', item:tallReels[1], tall:'tall-r'}]);
+
     build(mixed);
     sizeGrid();
   }).catch(function(e){console.warn('media.json:',e);});
@@ -418,13 +422,43 @@ function init(){
 function build(mixed){
   var g=document.getElementById('grid');
   g.innerHTML='';
+  // Явные позиции для каждой из 13 ячеек
+  // mixed[0]  = tall-l  col1 row1/3
+  // mixed[1]  = sq[0]   col2 row1
+  // mixed[2]  = sq[1]   col3 row1
+  // mixed[3]  = sq[2]   col2 row2
+  // mixed[4]  = sq[3]   col3 row2
+  // mixed[5]  = sq[4]   col1 row3
+  // mixed[6]  = sq[5]   col2 row3
+  // mixed[7]  = sq[6]   col3 row3
+  // mixed[8]  = sq[7]   col1 row4
+  // mixed[9]  = sq[8]   col2 row4
+  // mixed[10] = sq[9]   col1 row5
+  // mixed[11] = sq[10]  col2 row5
+  // mixed[12] = tall-r  col3 row4/6
+  var pos = [
+    {c:'1',r:'1/3'},  // tall-l
+    {c:'2',r:'1'},    // sq0
+    {c:'3',r:'1'},    // sq1
+    {c:'2',r:'2'},    // sq2
+    {c:'3',r:'2'},    // sq3
+    {c:'1',r:'3'},    // sq4
+    {c:'2',r:'3'},    // sq5
+    {c:'3',r:'3'},    // sq6
+    {c:'1',r:'4'},    // sq7
+    {c:'2',r:'4'},    // sq8
+    {c:'1',r:'5'},    // sq9
+    {c:'2',r:'5'},    // sq10
+    {c:'3',r:'4/6'},  // tall-r
+  ];
   for(var i=0;i<mixed.length;i++){
     var m=mixed[i];
     var el=document.createElement('div');
     var cap=rnd(CAPS);
     var lk=Math.floor(Math.random()*5000+100);
-    var tallClass = tallSlots[i] || null;
-    var isTall = !!tallClass;
+    var tallClass=m.tall||null;
+    el.style.gridColumn=pos[i].c;
+    el.style.gridRow=pos[i].r;
     if(m.type==='reel'){
       var vw=(Math.random()*18+2).toFixed(1)+'К';
       var url=m.item.url;
