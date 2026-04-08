@@ -15,7 +15,8 @@ a{color:inherit;text-decoration:none}img,video{display:block;max-width:100%}
 button{cursor:pointer;border:none;background:none;font-family:inherit}
 :root{--w:#fff;--bg:#fafafa;--br:#dbdbdb;--text:#262626;--muted:#8e8e8e;--blue:#0095f6;--gold:#c49a3c;--green:#25d366;--tg:#0088cc;--red:#ed4956;--ig:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);--max:470px}
 .topbar{position:sticky;top:0;z-index:300;background:var(--w);border-bottom:1px solid var(--br);height:52px;display:flex;align-items:center;justify-content:space-between;padding:0 14px}
-.logo{font-size:20px;font-weight:700;letter-spacing:-.5px;background:var(--ig);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.logo{display:flex;align-items:center;height:36px}
+.logo img{height:36px;width:auto;mix-blend-mode:multiply;display:block}
 .topbar-r{display:flex;align-items:center;gap:8px}
 .tb-wa{height:32px;padding:0 12px;border-radius:8px;background:var(--green);color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;gap:5px}
 .tb-wa svg{width:14px;height:14px;fill:#fff}
@@ -182,7 +183,7 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .fab:hover{transform:scale(1.1)}.fab svg{width:22px;height:22px;fill:#fff}
 .fab-wa{background:var(--green)}.fab-tg{background:var(--tg)}
 .footer{padding:28px 14px 52px;text-align:center;border-top:1px solid var(--br)}
-.flogo{font-size:18px;font-weight:700;background:var(--ig);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:8px}
+.flogo{display:flex;justify-content:center;margin-bottom:8px}.flogo img{height:28px;width:auto;mix-blend-mode:multiply}
 .flinks{display:flex;flex-wrap:wrap;justify-content:center;gap:5px 16px;margin-bottom:10px}
 .flinks a{font-size:12px;color:var(--muted)}.flinks a:hover{color:var(--text)}
 .fcopy{font-size:11px;color:var(--muted);line-height:1.7}
@@ -192,7 +193,7 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 </head>
 <body>
 <div class="topbar">
-  <div class="logo">kuzovport</div>
+  <div class="logo"><img src="logo.png" alt="КУЗОВПОРТ" loading="eager"></div>
   <div class="topbar-r">
     <a href="tel:+79261324365" class="tb-phone">+7 926 132 43 65</a>
     <a href="https://wa.me/79261324365" class="tb-wa" rel="noopener">
@@ -310,7 +311,7 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
   <button class="fb" onclick="send()">Отправить в WhatsApp →</button>
 </div>
 <footer class="footer">
-  <div class="flogo">kuzovport.ru</div>
+  <div class="flogo"><img src="logo.png" alt="КУЗОВПОРТ"></div>
   <div class="flinks"><a href="#ps">Услуги</a><a href="#ps">Цены</a><a href="https://kuzovport.ru/color/">Колористика</a><a href="#rv">Отзывы</a><a href="#mp">Адрес</a><a href="#fm">Заявка</a></div>
   <div class="fcopy">© 2025 КУЗОВПОРТ · Кузовной ремонт в Москве<br>ул. Измайловского зверинца д.8, 7 этаж · +7 (926) 132-43-65</div>
 </footer>
