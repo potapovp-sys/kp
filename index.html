@@ -492,10 +492,10 @@ function build(mixed){
 
 function openSt(){
   if(!_st.length)return;
-  _si=0;showSt(_si);
+  _si=0;
   document.getElementById('stbg').classList.add('show');
   document.body.style.overflow='hidden';
-  stTimer();
+  showSt(_si); // showSt сам вызывает stTimer
 }
 function closeSt(){
   var v=document.getElementById('stimg');
@@ -504,23 +504,20 @@ function closeSt(){
   document.body.style.overflow='';
   clearTimeout(_stT);
 }
-function buildProg(){
-  var p=document.getElementById('stprog');p.innerHTML='';
-  for(var i=0;i<_st.length;i++){
-    var d=document.createElement('div');d.className='sp-bar';
-    var f=document.createElement('div');f.className='sp-fill'+(i<_si?' done':'');
-    d.appendChild(f);p.appendChild(d);
-  }
-  var fills=document.querySelectorAll('#stprog .sp-fill');
-  if(fills[_si]){setTimeout(function(){fills[_si].style.transition='width 5s linear';fills[_si].style.width='100%';},50);}
-}
 function showSt(idx){
   if(idx<0||idx>=_st.length){closeSt();return;}
   _si=idx;
   var v=document.getElementById('stimg');
   v.src=_st[idx].url;
   v.muted=true;
-  v.play().catch(function(){});
+  // Строим прогресс-бары (без анимации текущего — stTimer сделает)
+  var p=document.getElementById('stprog');p.innerHTML='';
+  for(var i=0;i<_st.length;i++){
+    var d=document.createElement('div');d.className='sp-bar';
+    var f=document.createElement('div');f.className='sp-fill'+(i<_si?' done':'');
+    d.appendChild(f);p.appendChild(d);
+  }
+  document.getElementById('stcnt').textContent=(idx+1)+' / '+_st.length;
   // Сбрасываем кнопку звука
   var btn=document.getElementById('st-mute-btn');
   if(btn){
@@ -528,8 +525,8 @@ function showSt(idx){
     btn.innerHTML='<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="white" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg> Нажми для звука';
     btn.style.background='rgba(0,0,0,.55)';
   }
-  document.getElementById('stcnt').textContent=(idx+1)+' / '+_st.length;
-  buildProg();
+  v.play().catch(function(){});
+  stTimer(); // запускаем таймер по реальной длине
 }
 function stUnmute(){
   var v=document.getElementById('stimg');
@@ -541,9 +538,33 @@ function stUnmute(){
     btn.style.background='rgba(255,255,255,.15)';
   }
 }
-function stTimer(){clearTimeout(_stT);_stT=setTimeout(function(){nextSt();},5000);}
-function nextSt(){clearTimeout(_stT);if(_si+1>=_st.length){closeSt();return;}showSt(_si+1);stTimer();}
-function prevSt(){clearTimeout(_stT);if(_si>0){showSt(_si-1);stTimer();}}
+function stTimer(){
+  // Таймер по реальной длине видео
+  clearTimeout(_stT);
+  var v=document.getElementById('stimg');
+  if(!v) return;
+  function startAfterMeta(){
+    var dur=v.duration;
+    if(!dur || isNaN(dur) || dur===Infinity) dur=15; // fallback
+    var ms=Math.round(dur*1000);
+    // Анимируем прогресс-бар на реальную длину
+    var fills=document.querySelectorAll('#stprog .sp-fill');
+    if(fills[_si]){
+      fills[_si].style.transition='width '+dur+'s linear';
+      setTimeout(function(){fills[_si].style.width='100%';},50);
+    }
+    _stT=setTimeout(function(){nextSt();},ms);
+  }
+  if(v.duration && !isNaN(v.duration)){
+    startAfterMeta();
+  } else {
+    v.addEventListener('loadedmetadata',startAfterMeta,{once:true});
+    // Если метаданные не грузятся — fallback через 15 сек
+    setTimeout(function(){if(!v.duration||isNaN(v.duration)){startAfterMeta();}},1000);
+  }
+}
+function nextSt(){clearTimeout(_stT);if(_si+1>=_st.length){closeSt();return;}showSt(_si+1);}
+function prevSt(){clearTimeout(_stT);if(_si>0){showSt(_si-1);}}
 
 function openP(src,cap,lk){
   document.getElementById('msub').textContent='kuzovport.ru';
@@ -556,9 +577,8 @@ function openP(src,cap,lk){
 function openR(src,cap,vw,lk){
   document.getElementById('msub').textContent='Reels · kuzovport.ru';
   document.getElementById('mc').innerHTML='<div class="mre" id="mre" onclick="togV(this)">'
-    +'<video id="mvid" src="'+src+'" muted playsinline loop preload="auto"></video>'
-    +'<div class="rpo" id="mplay" onclick="event.stopPropagation();togV(document.getElementById(\'mre\'));unmute()"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>'
-    +'<button id="mbtn-mute" onclick="event.stopPropagation();togMute()" style="position:absolute;bottom:14px;left:14px;background:rgba(0,0,0,.55);border:none;border-radius:20px;color:#fff;font-size:12px;font-weight:700;padding:5px 10px;cursor:pointer;z-index:10;display:flex;align-items:center;gap:5px"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="white" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>Нажми для звука</button>'
+    +'<video id="mvid" src="'+src+'" playsinline loop preload="auto"></video>'
+    +'<div class="rpo" id="mplay"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>'
     +'<div class="rbi"><div class="rbt">'+cap+'</div><div class="rbv"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>'+vw+' просмотров</div></div>'
     +'<div class="rsaw">'
     +'<div class="rsab" onclick="event.stopPropagation();rlk(this)"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" fill="none" stroke="white" stroke-width="2"/></svg><span>'+Math.floor(lk/1000)+'К</span></div>'
@@ -570,36 +590,23 @@ function openR(src,cap,vw,lk){
   document.getElementById('mmeta').textContent='Reels · '+vw+' просмотров';
   document.getElementById('mlk').classList.remove('liked');
   showM();
+  // Сразу запускаем со звуком — пользователь нажал на ячейку (user gesture)
   setTimeout(function(){
     var v=document.getElementById('mvid');
-    if(v) v.play().then(function(){
-      var r=document.getElementById('mre');if(r)r.classList.add('playing');
-    }).catch(function(){});
-  },350);
-}
-function unmute(){
-  // Снимаем mute — вызывается кнопкой плей и первым тапом
-  var v=document.getElementById('mvid');
-  var btn=document.getElementById('mbtn-mute');
-  if(!v)return;
-  v.muted=false;
-  if(btn){
-    btn.innerHTML='<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="white" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg> Звук вкл';
-    btn.style.background='rgba(255,255,255,.15)';
-  }
-}
-function togMute(){
-  var v=document.getElementById('mvid');
-  var btn=document.getElementById('mbtn-mute');
-  if(!v)return;
-  v.muted=!v.muted;
-  if(!v.muted){
-    btn.innerHTML='<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="white" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg> Звук вкл';
-    btn.style.background='rgba(255,255,255,.15)';
-  } else {
-    btn.innerHTML='<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="white" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg> Без звука';
-    btn.style.background='rgba(0,0,0,.55)';
-  }
+    if(!v) return;
+    v.muted=false;
+    v.play().then(function(){
+      var r=document.getElementById('mre');
+      if(r) r.classList.add('playing');
+    }).catch(function(){
+      // Если браузер заблокировал звук — запускаем без звука
+      v.muted=true;
+      v.play().then(function(){
+        var r=document.getElementById('mre');
+        if(r) r.classList.add('playing');
+      }).catch(function(){});
+    });
+  },100);
 }
 function togV(el){
   var v=document.getElementById('mvid');if(!v)return;
