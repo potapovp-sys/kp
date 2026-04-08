@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Все работы — КУЗОВПОРТ</title>
+<meta name="description" content="Все работы кузовного ремонта КУЗОВПОРТ — рилсы, фото, сторис.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:#fafafa;color:#262626;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}img,video{display:block;max-width:100%}
+button{cursor:pointer;border:none;background:none;font-family:inherit}
+:root{--w:#fff;--bg:#fafafa;--br:#dbdbdb;--text:#262626;--muted:#8e8e8e;--green:#25d366;--tg:#0088cc;--red:#ed4956;--ig:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);--max:470px}
+
+.topbar{position:sticky;top:0;z-index:300;background:var(--w);border-bottom:1px solid var(--br);height:52px;display:flex;align-items:center;gap:10px;padding:0 14px;max-width:var(--max);margin:0 auto;width:100%}
+.back-btn{display:flex;align-items:center;gap:6px;font-size:14px;font-weight:600;color:var(--text)}
+.back-btn svg{width:20px;height:20px;fill:none;stroke:var(--text);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.topbar-title{font-size:16px;font-weight:700;flex:1;text-align:center;margin-right:30px}
+
+/* TABS */
+.tabs{display:flex;border-bottom:1px solid var(--br);background:var(--w);max-width:var(--max);margin:0 auto;position:sticky;top:52px;z-index:200}
+.tab{flex:1;padding:12px 0;font-size:13px;font-weight:600;color:var(--muted);text-align:center;border-bottom:2px solid transparent;transition:color .15s,border-color .15s;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:5px}
+.tab.active{color:var(--text);border-color:var(--text)}
+.tab svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+/* GRID */
+.wrap{max-width:var(--max);margin:0 auto}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;padding-top:2px}
+.gc{position:relative;overflow:hidden;background:#111;cursor:pointer;aspect-ratio:1/1}
+.gc.photo{background:#efefef}
+.gc video,.gc img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s,filter .25s}
+.gc:hover video,.gc:hover img{transform:scale(1.06);filter:brightness(.75)}
+.gc-ov{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.3);opacity:0;transition:opacity .2s}
+.gc:hover .gc-ov{opacity:1}
+.ov-s{color:#fff;display:flex;align-items:center;gap:4px;font-weight:700;font-size:13px}
+.ov-s svg{width:14px;height:14px;fill:#fff}
+.rb{position:absolute;top:6px;right:6px;background:rgba(0,0,0,.6);border-radius:4px;padding:2px 5px;display:flex;align-items:center;gap:2px;z-index:2}
+.rb svg{width:10px;height:10px;fill:#fff}.rb span{font-size:10px;color:#fff;font-weight:600}
+.ph-ic{position:absolute;top:6px;right:6px;background:rgba(0,0,0,.45);border-radius:4px;padding:2px 4px;z-index:2}
+.ph-ic svg{width:11px;height:11px;fill:#fff;display:block}
+
+/* LOAD MORE */
+.load-more-wrap{padding:16px 14px;text-align:center}
+.load-more-btn{padding:12px 32px;border-radius:10px;background:var(--w);border:1px solid var(--br);font-size:14px;font-weight:600;color:var(--text);transition:background .15s,border-color .15s}
+.load-more-btn:hover{background:#f0f0f0;border-color:#aaa}
+.load-more-btn:disabled{opacity:.5;cursor:default}
+.count-info{font-size:13px;color:var(--muted);margin-bottom:8px}
+
+/* MODAL */
+.modal-bg{position:fixed;inset:0;z-index:400;background:rgba(0,0,0,.6);opacity:0;pointer-events:none;transition:opacity .25s}
+.modal-bg.show{opacity:1;pointer-events:all}
+.modal{position:fixed;bottom:0;left:50%;transform:translate(-50%,100%);width:100%;max-width:var(--max);z-index:500;background:var(--w);border-radius:18px 18px 0 0;max-height:94dvh;overflow-y:auto;scrollbar-width:none;transition:transform .32s cubic-bezier(.32,1,.28,1)}
+.modal::-webkit-scrollbar{display:none}.modal.show{transform:translate(-50%,0)}
+.mh{width:36px;height:4px;border-radius:2px;background:#ddd;margin:10px auto 0}
+.mhd{display:flex;align-items:center;gap:10px;padding:10px 14px 8px}
+.mav{width:32px;height:32px;flex-shrink:0;border-radius:50%;background:var(--ig);padding:1.5px}
+.mavi{width:100%;height:100%;border-radius:50%;border:2px solid var(--w);overflow:hidden;background:#eee}
+.mavi img{width:100%;height:100%;object-fit:cover}
+.mu{font-size:14px;font-weight:700}.ms{font-size:11px;color:var(--muted);margin-top:1px}
+.mcl{margin-left:auto;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#f2f2f2;font-size:18px;color:#555}
+.mpho{width:100%;overflow:hidden;background:#111}
+.mpho img{width:100%;display:block;object-fit:cover;aspect-ratio:1/1}
+.mre{width:100%;aspect-ratio:9/16;background:#111;position:relative;overflow:hidden;cursor:pointer}
+.mre video{width:100%;height:100%;object-fit:cover}
+.rpo{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:56px;height:56px;border-radius:50%;background:rgba(255,255,255,.2);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;pointer-events:none;transition:opacity .2s}
+.mre.playing .rpo{opacity:0}
+.rpo svg{width:22px;height:22px;fill:#fff;margin-left:3px}
+.rbi{position:absolute;bottom:0;left:0;right:0;padding:40px 14px 14px;background:linear-gradient(transparent,rgba(0,0,0,.7));pointer-events:none}
+.rbt{font-size:14px;color:#fff;font-weight:600;line-height:1.3}
+.rbv{font-size:12px;color:rgba(255,255,255,.65);margin-top:3px;display:flex;align-items:center;gap:4px}
+.rbv svg{width:13px;height:13px;fill:rgba(255,255,255,.65)}
+.rsaw{position:absolute;right:10px;bottom:80px;display:flex;flex-direction:column;gap:16px;align-items:center}
+.rsab{display:flex;flex-direction:column;align-items:center;gap:2px;cursor:pointer}
+.rsab svg{width:24px;height:24px}.rsab span{font-size:11px;color:#fff;font-weight:600}
+.mac{display:flex;align-items:center;padding:4px 10px 0}
+.act{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:background .15s}
+.act:hover{background:#f2f2f2}
+.act svg{width:24px;height:24px;fill:none;stroke:var(--text);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.act.liked svg{fill:var(--red);stroke:var(--red)}.asave{margin-left:auto}
+.mlk{font-size:14px;font-weight:700;padding:2px 14px 4px}
+.mcp{font-size:14px;padding:0 14px 6px;line-height:1.5}
+.mcp b{font-weight:700}.ht{color:#00376b}
+.mmt{font-size:13px;color:var(--muted);padding:0 14px 14px}
+
+.fabs{position:fixed;bottom:18px;right:12px;z-index:350;display:flex;flex-direction:column;gap:9px}
+.fab{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(0,0,0,.22);transition:transform .18s}
+.fab:hover{transform:scale(1.1)}.fab svg{width:22px;height:22px;fill:#fff}
+.fab-wa{background:var(--green)}.fab-tg{background:var(--tg)}
+
+.empty{padding:40px 14px;text-align:center;color:var(--muted);font-size:14px}
+</style>
+</head>
+<body>
+
+<div style="max-width:var(--max);margin:0 auto">
+  <div class="topbar">
+    <a href="index.html" class="back-btn">
+      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+      Назад
+    </a>
+    <div class="topbar-title">Наши работы</div>
+  </div>
+</div>
+
+<div class="tabs">
+  <div class="tab active" id="tab-reels" onclick="switchTab('reels')">
+    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+    Рилсы
+  </div>
+  <div class="tab" id="tab-photos" onclick="switchTab('photos')">
+    <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+    Фото
+  </div>
+  <div class="tab" id="tab-stories" onclick="switchTab('stories')">
+    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="9"/></svg>
+    Сторис
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="grid3" id="grid"></div>
+  <div class="load-more-wrap" id="lm-wrap">
+    <div class="count-info" id="lm-info"></div>
+    <button class="load-more-btn" id="lm-btn" onclick="loadMore()">Загрузить ещё</button>
+  </div>
+</div>
+
+<div class="fabs">
+  <a href="https://wa.me/79261324365" class="fab fab-wa" rel="noopener"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+  <a href="https://t.me/kuzovport" class="fab fab-tg" rel="noopener"><svg viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></a>
+</div>
+
+<div class="modal-bg" id="mbg" onclick="closeM()"></div>
+<div class="modal" id="modal">
+  <div class="mh"></div>
+  <div class="mhd">
+    <div class="mav"><div class="mavi"><img src="https://kuzovport.ru/wp-content/uploads/2024/04/IMG_3120.jpeg" alt="kp"></div></div>
+    <div><div class="mu">kuzovport.ru</div><div class="ms" id="msub"></div></div>
+    <button class="mcl" onclick="closeM()">✕</button>
+  </div>
+  <div id="mc"></div>
+  <div class="mac">
+    <button class="act" id="mlk" onclick="this.classList.toggle('liked')"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+    <button class="act" onclick="window.open('https://wa.me/79261324365?text='+encodeURIComponent('Хочу записаться — kuzovport.ru'),'_blank')"><svg viewBox="0 0 24 24"><path d="M22 2L11 13"/><path d="M22 2L15 22l-4-9-9-4 20-7z"/></svg></button>
+    <button class="act asave"><svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
+  </div>
+  <div class="mlk" id="mlikes"></div>
+  <div class="mcp" id="mcap"></div>
+  <div class="mmt" id="mmeta"></div>
+</div>
+
+<script>
+var CAPS = ['Вот так выглядит настоящий кузовной ремонт! Пожизненная гарантия 🔧','До и после — смотрите результат! 3 дня, цвет как с завода ✨','Porsche, BMW, Mercedes — работаем с любыми марками 🚗','От рихтовки до финального покрытия 🎨','Подбор цвета STANDOX. 50000 оттенков — ваш найдём 🎯','Оценим по фото в WhatsApp — отвечаем за 1 час 📲'];
+var HT = '#кузовнойремонт #покраска #москва #kuzovport';
+var PAGE_SIZE = 12;
+
+function rnd(a){return a[Math.floor(Math.random()*a.length)];}
+function shuf(a){var b=a.slice();for(var i=b.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=b[i];b[i]=b[j];b[j]=t;}return b;}
+
+var _data={reels:[],photos:[],stories:[]};
+var _cur='reels';
+var _list=[];
+var _shown=0;
+
+fetch('media.json').then(function(r){return r.json();}).then(function(d){
+  _data.reels  = shuf(d.reels);
+  _data.photos = shuf(d.photos);
+  _data.stories= shuf(d.stories);
+  renderTab('reels');
+}).catch(function(e){console.warn(e);});
+
+function switchTab(tab){
+  _cur=tab;
+  document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('active');});
+  document.getElementById('tab-'+tab).classList.add('active');
+  _list=_data[tab];
+  _shown=0;
+  document.getElementById('grid').innerHTML='';
+  loadMore();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function renderTab(tab){
+  _cur=tab;
+  _list=_data[tab];
+  _shown=0;
+  document.getElementById('grid').innerHTML='';
+  loadMore();
+}
+
+function loadMore(){
+  var btn=document.getElementById('lm-btn');
+  btn.disabled=true;
+  var end=Math.min(_shown+PAGE_SIZE,_list.length);
+  var frag=document.createDocumentFragment();
+  for(var i=_shown;i<end;i++){
+    var item=_list[i];
+    var el=document.createElement('div');
+    var url=item.url;
+    var lk=Math.floor(Math.random()*5000+100);
+    var cap=rnd(CAPS);
+    if(_cur==='reels'||(_cur==='stories'&&url.indexOf('.mp4')>-1)){
+      var vw=(Math.random()*18+2).toFixed(1)+'К';
+      el.className='gc';
+      el.innerHTML='<video src="'+url+'" muted playsinline preload="none" loop></video><div class="rb"><svg viewBox="0 0 24 24"><path d="M15 12L9 7v10l6-5z"/></svg><span>'+vw+'</span></div><div class="gc-ov"><div class="ov-s"><svg viewBox="0 0 24 24"><path d="M15 12L9 7v10l6-5z"/></svg>'+vw+'</div></div>';
+      (function(el,url,cap,vw,lk){
+        var o=new IntersectionObserver(function(en){var v=el.querySelector('video');if(!v)return;if(en[0].isIntersecting)v.play().catch(function(){});else v.pause();},{threshold:0.3});
+        o.observe(el);
+        el.addEventListener('click',function(){openR(url,cap,vw,lk);});
+      })(el,url,cap,vw,lk);
+    } else {
+      el.className='gc photo';
+      el.innerHTML='<img src="'+url+'" alt="kuzovport" loading="lazy" onerror="this.parentElement.style.background=\'#ddd\'"><div class="ph-ic"><svg viewBox="0 0 24 24" fill="white"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4" fill="white"/></svg></div><div class="gc-ov"><div class="ov-s"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>'+lk+'</div></div>';
+      (function(el,url,cap,lk){el.addEventListener('click',function(){openP(url,cap,lk);});})(el,url,cap,lk);
+    }
+    frag.appendChild(el);
+  }
+  document.getElementById('grid').appendChild(frag);
+  _shown=end;
+  var info=document.getElementById('lm-info');
+  var wrap=document.getElementById('lm-wrap');
+  info.textContent='Показано '+_shown+' из '+_list.length;
+  if(_shown>=_list.length){btn.style.display='none';wrap.style.paddingBottom='4px';}
+  else{btn.disabled=false;btn.style.display='';}
+}
+
+function openP(src,cap,lk){
+  document.getElementById('msub').textContent='kuzovport.ru';
+  document.getElementById('mc').innerHTML='<div class="mpho"><img src="'+src+'" alt="kuzovport" loading="lazy"></div>';
+  document.getElementById('mlikes').textContent=lk+' отметок «Нравится»';
+  document.getElementById('mcap').innerHTML='<b>kuzovport.ru</b> '+cap+' <span class="ht">'+HT+'</span>';
+  document.getElementById('mmeta').textContent='Кузовной ремонт · Москва';
+  document.getElementById('mlk').classList.remove('liked');showM();
+}
+function openR(src,cap,vw,lk){
+  document.getElementById('msub').textContent='Reels · kuzovport.ru';
+  document.getElementById('mc').innerHTML='<div class="mre" id="mre" onclick="togV(this)"><video id="mvid" src="'+src+'" muted playsinline loop preload="auto"></video><div class="rpo"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><div class="rbi"><div class="rbt">'+cap+'</div><div class="rbv"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>'+vw+' просмотров</div></div><div class="rsaw"><div class="rsab" onclick="event.stopPropagation();rlk(this)"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" fill="none" stroke="white" stroke-width="2"/></svg><span>'+Math.floor(lk/1000)+'К</span></div><div class="rsab" onclick="event.stopPropagation()"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" fill="none" stroke="white" stroke-width="2"/></svg><span>'+Math.floor(lk/14)+'</span></div><div class="rsab" onclick="event.stopPropagation();window.open(\'https://wa.me/79261324365\',\'_blank\')"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" fill="none" stroke="white" stroke-width="2"/></svg><span>WA</span></div></div></div>';
+  document.getElementById('mlikes').textContent='';
+  document.getElementById('mcap').innerHTML='<b>kuzovport.ru</b> '+cap+' <span class="ht">'+HT+'</span>';
+  document.getElementById('mmeta').textContent='Reels · '+vw+' просмотров';
+  document.getElementById('mlk').classList.remove('liked');showM();
+  setTimeout(function(){var v=document.getElementById('mvid');if(v)v.play().then(function(){var r=document.getElementById('mre');if(r)r.classList.add('playing');}).catch(function(){});},350);
+}
+function togV(el){var v=document.getElementById('mvid');if(!v)return;if(v.paused){v.play();el.classList.add('playing');}else{v.pause();el.classList.remove('playing');}}
+function rlk(el){var p=el.querySelector('path');var lk=p.getAttribute('fill')!=='none';p.setAttribute('fill',lk?'none':'red');p.setAttribute('stroke',lk?'white':'red');}
+function showM(){document.getElementById('mbg').classList.add('show');document.getElementById('modal').classList.add('show');document.body.style.overflow='hidden';}
+function closeM(){document.getElementById('mbg').classList.remove('show');document.getElementById('modal').classList.remove('show');document.body.style.overflow='';var v=document.getElementById('mvid');if(v){v.pause();v.src='';}}
+var sy=0;
+document.getElementById('modal').addEventListener('touchstart',function(e){sy=e.touches[0].clientY;},{passive:true});
+document.getElementById('modal').addEventListener('touchend',function(e){if(e.changedTouches[0].clientY-sy>80)closeM();},{passive:true});
+</script>
+</body>
+</html>
