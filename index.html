@@ -47,11 +47,9 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .hl-in{width:100%;height:100%;border-radius:50%;border:3px solid var(--w);display:flex;align-items:center;justify-content:center;background:#f5f5f5;font-size:19px}
 .hl-name{font-size:10px;text-align:center;white-space:nowrap}
 
-/* GRID */
+/* GRID — Instagram Explore: 3 равных колонки, 5 рядов */
 .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;padding-top:2px;background:#fafafa}
 .gc{position:relative;overflow:hidden;background:#111;cursor:pointer;aspect-ratio:1/1}
-.gc.big{grid-column:span 2;grid-row:span 2;aspect-ratio:auto}
-.gc.wide{grid-column:span 2;aspect-ratio:2/1}
 .gc.sm{background:#efefef}
 .gc video,.gc img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s,filter .25s}
 .gc:hover video,.gc:hover img{transform:scale(1.06);filter:brightness(.75)}
@@ -64,7 +62,6 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .ph-badge{position:absolute;top:7px;right:7px;background:rgba(0,0,0,.45);border-radius:4px;padding:2px 5px;z-index:2}
 .ph-badge svg{width:11px;height:11px;fill:#fff;display:block}
 .gc.ph-cell{background:#e8e4dc;display:flex;align-items:center;justify-content:center;font-size:28px;cursor:default}
-
 /* VIEW ALL */
 .view-all-wrap{padding:12px 14px 4px;background:var(--w);border-bottom:1px solid var(--br)}
 .view-all-btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:11px;border-radius:10px;background:var(--bg);border:1px solid var(--br);font-size:14px;font-weight:600;color:var(--text);transition:background .15s,border-color .15s}
@@ -242,13 +239,11 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 </div>
 
 <div class="grid" id="grid">
-  <div class="gc big ph-cell">🎬</div>
-  <div class="gc sm ph-cell">📸</div>
-  <div class="gc sm ph-cell">📸</div>
-  <div class="gc wide ph-cell">🎬</div>
-  <div class="gc sm ph-cell">📸</div>
-  <div class="gc wide ph-cell">📸</div>
-  <div class="gc sm ph-cell">📸</div>
+  <div class="gc sm ph-cell">📸</div><div class="gc sm ph-cell">📸</div><div class="gc sm ph-cell">📸</div>
+  <div class="gc sm ph-cell">📸</div><div class="gc sm ph-cell">📸</div><div class="gc sm ph-cell">📸</div>
+  <div class="gc sm ph-cell">📸</div><div class="gc sm ph-cell">📸</div><div class="gc sm ph-cell">📸</div>
+  <div class="gc sm ph-cell">📸</div><div class="gc sm ph-cell">📸</div><div class="gc sm ph-cell">📸</div>
+  <div class="gc sm ph-cell">📸</div><div class="gc sm ph-cell">📸</div><div class="gc sm ph-cell">📸</div>
 </div>
 
 <div class="view-all-wrap">
@@ -356,8 +351,8 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 <script>
 var CAPS = ['Вот так выглядит настоящий кузовной ремонт! Пожизненная гарантия 🔧','До и после — смотрите результат! 3 дня работы, цвет как с завода ✨','Porsche, BMW, Mercedes — работаем с любыми марками 🚗','Показываем процесс изнутри — от рихтовки до покрытия 🎨','Подбор цвета STANDOX. 50000 оттенков — ваш найдём точно 🎯','Оценим ваш ремонт по фото в WhatsApp — отвечаем за 1 час 📲','Кузовной ремонт в Измайлово — рядом, быстро, с гарантией 🏆','Профессиональное оборудование, мастера высшей категории 🏭'];
 var HT = '#кузовнойремонт #покраска #москва #kuzovport';
-var PAT = ['big','sm','sm','wide','sm','wide','sm'];
-var GRID_N = 28;
+// Простая равномерная сетка 3×5 = 15 ячеек, миксуем рилсы и фото рандомно
+var GRID_N = 15;
 
 function rnd(a){return a[Math.floor(Math.random()*a.length)];}
 function shuf(a){var b=a.slice();for(var i=b.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=b[i];b[i]=b[j];b[j]=t;}return b;}
@@ -369,39 +364,46 @@ function init(){
     document.getElementById('sr').textContent=d.counts.reels;
     document.getElementById('ss').textContent=d.counts.stories;
     _st=shuf(d.stories).slice(0,5);
-    build(shuf(d.reels),shuf(d.photos));
+    // Миксуем: объединяем рилсы и фото, перемешиваем, берём первые 15
+    var mixed = [];
+    var reels = shuf(d.reels);
+    var photos = shuf(d.photos);
+    // чередуем ~50/50
+    var ri=0, pi=0;
+    while(mixed.length < GRID_N){
+      if(ri < reels.length && (pi >= photos.length || Math.random() > 0.45)){
+        mixed.push({type:'reel', item: reels[ri++]});
+      } else if(pi < photos.length){
+        mixed.push({type:'photo', item: photos[pi++]});
+      } else break;
+    }
+    build(mixed);
   }).catch(function(e){console.warn('media.json:',e);});
 }
 
-function build(reels,photos){
+function build(mixed){
   var g=document.getElementById('grid');
   g.innerHTML='';
-  var ri=0,pi=0;
-  for(var i=0;i<GRID_N;i++){
-    var slot=PAT[i%PAT.length];
-    var big=slot==='big'||slot==='wide';
+  for(var i=0;i<mixed.length;i++){
+    var m=mixed[i];
     var el=document.createElement('div');
-    if(big&&ri<reels.length){
-      var it=reels[ri++],cap=rnd(CAPS),vw=(Math.random()*18+2).toFixed(1)+'К',lk=Math.floor(Math.random()*5000+500),url=it.url;
-      el.className='gc '+slot;
+    var cap=rnd(CAPS);
+    var lk=Math.floor(Math.random()*5000+100);
+    if(m.type==='reel'){
+      var vw=(Math.random()*18+2).toFixed(1)+'К';
+      var url=m.item.url;
+      el.className='gc';
       el.innerHTML='<video src="'+url+'" muted playsinline preload="none" loop></video><div class="rb"><svg viewBox="0 0 24 24"><path d="M15 12L9 7v10l6-5z"/></svg><span>'+vw+'</span></div><div class="gc-ov"><div class="ov-s"><svg viewBox="0 0 24 24"><path d="M15 12L9 7v10l6-5z"/></svg>'+vw+'</div></div>';
       (function(el,url,cap,vw,lk){
         var o=new IntersectionObserver(function(en){var v=el.querySelector('video');if(!v)return;if(en[0].isIntersecting)v.play().catch(function(){});else v.pause();},{threshold:0.3});
         o.observe(el);
         el.addEventListener('click',function(){openR(url,cap,vw,lk);});
       })(el,url,cap,vw,lk);
-    } else if(pi<photos.length){
-      var ph=photos[pi++],pl=Math.floor(Math.random()*300+30),pc=rnd(CAPS),pu=ph.url;
-      el.className='gc sm '+slot;
-      el.innerHTML='<img src="'+pu+'" alt="kuzovport" loading="lazy" onerror="this.parentElement.style.background=\'#ddd\'"><div class="ph-badge"><svg viewBox="0 0 24 24" fill="white"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4" fill="white"/></svg></div><div class="gc-ov"><div class="ov-s"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>'+pl+'</div></div>';
-      (function(el,pu,pc,pl){el.addEventListener('click',function(){openP(pu,pc,pl);});})(el,pu,pc,pl);
-    } else if(ri<reels.length){
-      var it2=reels[ri++],c2=rnd(CAPS),v2=(Math.random()*18+2).toFixed(1)+'К',l2=Math.floor(Math.random()*5000+500),u2=it2.url;
-      el.className='gc '+slot;
-      el.innerHTML='<video src="'+u2+'" muted playsinline preload="none" loop></video><div class="rb"><svg viewBox="0 0 24 24"><path d="M15 12L9 7v10l6-5z"/></svg><span>'+v2+'</span></div><div class="gc-ov"><div class="ov-s"><svg viewBox="0 0 24 24"><path d="M15 12L9 7v10l6-5z"/></svg>'+v2+'</div></div>';
-      (function(el,u2,c2,v2,l2){var o=new IntersectionObserver(function(en){var v=el.querySelector('video');if(!v)return;if(en[0].isIntersecting)v.play().catch(function(){});else v.pause();},{threshold:0.3});o.observe(el);el.addEventListener('click',function(){openR(u2,c2,v2,l2);});})(el,u2,c2,v2,l2);
     } else {
-      el.className='gc ph-cell '+slot;el.textContent=big?'🎬':'📸';
+      var pu=m.item.url;
+      el.className='gc sm';
+      el.innerHTML='<img src="'+pu+'" alt="kuzovport" loading="lazy" onerror="this.parentElement.style.background=\'#ddd\'"><div class="ph-badge"><svg viewBox="0 0 24 24" fill="white"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4" fill="white"/></svg></div><div class="gc-ov"><div class="ov-s"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>'+lk+'</div></div>';
+      (function(el,pu,cap,lk){el.addEventListener('click',function(){openP(pu,cap,lk);});})(el,pu,cap,lk);
     }
     g.appendChild(el);
   }
