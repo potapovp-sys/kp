@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Колористика STANDOX — Подбор цвета автомобиля | КУЗОВПОРТ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:#fafafa;color:#262626;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}img,video{display:block;max-width:100%}
+button{cursor:pointer;border:none;background:none;font-family:inherit}
+:root{--w:#fff;--bg:#fafafa;--br:#dbdbdb;--text:#262626;--muted:#8e8e8e;--green:#25d366;--tg:#0088cc;--gold:#c49a3c;--ig:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);--max:470px}
+.topbar{position:sticky;top:0;z-index:300;background:var(--w);border-bottom:1px solid var(--br);height:52px;display:flex;align-items:center;justify-content:space-between;padding:0 10px;gap:8px;max-width:100%}
+.logo{display:flex;align-items:center;flex-shrink:1;min-width:0;max-width:160px}.logo img{height:28px;width:auto;max-width:100%;display:block}
+.topbar-r{display:flex;align-items:center;gap:6px;flex-shrink:0}
+.tb-wa{height:32px;padding:0 10px;border-radius:8px;background:var(--green);color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;gap:5px;white-space:nowrap}
+.tb-wa svg{width:14px;height:14px}
+.tb-tg{width:32px;height:32px;border-radius:50%;background:var(--tg);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.tb-tg svg{width:16px;height:16px}
+.wrap{max-width:var(--max);margin:0 auto;padding:0}
+.fabs{position:fixed;bottom:18px;right:12px;z-index:350;display:flex;flex-direction:column;gap:9px}
+.fab{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(0,0,0,.22);transition:transform .18s}
+.fab:hover{transform:scale(1.1)}.fab svg{width:22px;height:22px}
+.fab-wa{background:var(--green)}.fab-tg{background:var(--tg)}
+
+.color-hero{background:linear-gradient(135deg,#0d1117,#1a2744,#0d2137);padding:32px 14px 28px;color:#fff;text-align:center}
+.color-tag{display:inline-block;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.9);font-size:10px;font-weight:700;letter-spacing:2px;padding:4px 12px;border-radius:5px;margin-bottom:12px}
+.color-hero h1{font-size:26px;font-weight:800;line-height:1.2;margin-bottom:8px}
+.color-hero p{font-size:14px;color:rgba(255,255,255,.6);line-height:1.6}
+.color-chips{display:flex;gap:8px;justify-content:center;margin:16px 0 0}
+.color-chip{width:32px;height:32px;border-radius:50%;border:2px solid rgba(255,255,255,.2)}
+.color-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:16px 14px;background:rgba(255,255,255,.03)}
+.cs{text-align:center;padding:12px 6px;background:rgba(255,255,255,.05);border-radius:9px}
+.cs-n{font-size:18px;font-weight:800;color:#c9a84c}.cs-l{font-size:10px;color:rgba(255,255,255,.4);text-transform:uppercase;margin-top:3px}
+.color-sec{padding:20px 14px;border-bottom:1px solid var(--br)}
+.color-sec h2{font-size:17px;font-weight:700;margin-bottom:10px}
+.color-sec p{font-size:14px;color:#444;line-height:1.7;margin-bottom:10px}
+.color-sec ul{margin:8px 0 10px 16px}
+.color-sec li{font-size:14px;color:#444;margin-bottom:6px;line-height:1.5}
+.color-cta{margin:24px 14px;padding:20px;background:linear-gradient(90deg,#c49a3c,#e8c060);border-radius:12px;text-align:center}
+.color-cta h3{font-size:17px;font-weight:700;color:#1a1a1a;margin-bottom:6px}
+.color-cta p{font-size:13px;color:#4a3a00;margin-bottom:14px}
+.color-cta a{display:inline-flex;align-items:center;gap:8px;background:#1a1a1a;color:#fff;font-weight:700;font-size:14px;padding:11px 22px;border-radius:8px}
+.partner-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0 14px 20px}
+.partner-card{background:var(--w);border:1px solid var(--br);border-radius:10px;padding:14px;text-align:center}
+.partner-card .ico{font-size:28px;margin-bottom:6px}
+.partner-card h3{font-size:13px;font-weight:700;margin-bottom:4px}
+.partner-card p{font-size:11px;color:var(--muted);line-height:1.4}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <a href="/kp/" class="logo"><img src="/kp/logo.png" alt="КУЗОВПОРТ"></a>
+  <div class="topbar-r">
+    <a href="https://wa.me/79261324365" class="tb-wa" rel="noopener"><svg viewBox="0 0 24 24" fill="#fff" width="18" height="18"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Написать</a>
+    <a href="https://t.me/kuzovport" class="tb-tg" rel="noopener"><svg viewBox="0 0 24 24" fill="#fff" width="18" height="18"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></a>
+  </div>
+</div>
+<div class="wrap">
+<div class="color-hero">
+  <div class="color-tag">STANDOX · SIKKENS · DYNACOAT</div>
+  <h1>Колористика<br>для автосервисов</h1>
+  <p>Профессиональный подбор автоэмалей.<br>B2B-партнёрство для СТО по всей России.</p>
+  <div class="color-chips">
+    <div class="color-chip" style="background:#0d0d0d"></div>
+    <div class="color-chip" style="background:#c0c0c0"></div>
+    <div class="color-chip" style="background:#f5f5f5;border-color:rgba(255,255,255,.4)"></div>
+    <div class="color-chip" style="background:#8b0000"></div>
+    <div class="color-chip" style="background:#1c3a6a"></div>
+    <div class="color-chip" style="background:#c9a84c"></div>
+    <div class="color-chip" style="background:#2a5e2a"></div>
+    <div class="color-chip" style="background:#708090"></div>
+  </div>
+  <div class="color-stats">
+    <div class="cs"><div class="cs-n">50K+</div><div class="cs-l">Оттенков</div></div>
+    <div class="cs"><div class="cs-n">100%</div><div class="cs-l">Точность</div></div>
+    <div class="cs"><div class="cs-n">B2B</div><div class="cs-l">Для СТО</div></div>
+  </div>
+</div>
+
+<div class="color-sec">
+  <h2>🎨 Что такое колористика в кузовном ремонте?</h2>
+  <p>Колористика — это наука и искусство точного подбора цвета автоэмали. Правильно подобранный цвет неотличим от заводского — даже на солнце и под углом.</p>
+  <p>Мы используем профессиональные спектрофотометры и базы данных STANDOX с более чем 50 000 оттенков всех производителей автомобилей.</p>
+</div>
+
+<div class="color-sec">
+  <h2>🔬 Технология подбора цвета</h2>
+  <ul>
+    <li><strong>Замер спектрофотометром</strong> — прибор считывает точный цвет покрытия</li>
+    <li><strong>Поиск в базе</strong> — система находит ближайшее совпадение из 50 000+ формул</li>
+    <li><strong>Корректировка формулы</strong> — колорист вносит правки под конкретный автомобиль</li>
+    <li><strong>Контрольный выкрас</strong> — проверка совпадения перед покраской</li>
+    <li><strong>Результат</strong> — цвет неотличим от оригинала</li>
+  </ul>
+</div>
+
+<div class="color-sec">
+  <h2>🏭 B2B-партнёрство для автосервисов</h2>
+  <p>Мы предлагаем партнёрство для кузовных СТО по всей России:</p>
+  <ul>
+    <li>Удалённый подбор цвета по фото и VIN-коду</li>
+    <li>Поставка готовых смешанных эмалей в вашу мастерскую</li>
+    <li>Консультации колориста по сложным оттенкам</li>
+    <li>Гибкие условия сотрудничества</li>
+  </ul>
+</div>
+
+<div class="partner-grid">
+  <div class="partner-card"><div class="ico">🔬</div><h3>STANDOX</h3><p>Премиальные автоэмали, 50 000+ формул</p></div>
+  <div class="partner-card"><div class="ico">🎨</div><h3>SIKKENS</h3><p>Профессиональные лакокрасочные материалы</p></div>
+  <div class="partner-card"><div class="ico">⚗️</div><h3>DYNACOAT</h3><p>Современные системы окраски</p></div>
+  <div class="partner-card"><div class="ico">📐</div><h3>Спектрофотометр</h3><p>Точность подбора до 0.1 ΔE</p></div>
+</div>
+
+<div class="color-cta">
+  <h3>Нужен подбор цвета?</h3>
+  <p>Пришлите фото и VIN — ответим с формулой за 1 час</p>
+  <a href="https://wa.me/79261324365" rel="noopener"><svg viewBox="0 0 24 24" fill="#fff" width="18" height="18"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Написать в WhatsApp</a>
+</div>
+</div>
+<div class="fabs">
+  <a href="https://wa.me/79261324365" class="fab fab-wa" rel="noopener"><svg viewBox="0 0 24 24" fill="#fff" width="18" height="18"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+  <a href="https://t.me/kuzovport" class="fab fab-tg" rel="noopener"><svg viewBox="0 0 24 24" fill="#fff" width="18" height="18"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></a>
+</div>
+</body>
+</html>
